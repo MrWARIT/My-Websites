@@ -4,17 +4,24 @@ var canClick = false;
 var level;
 activateClickInput();
 
-document.addEventListener("keydown", startGame);
+document.addEventListener("keydown", checkKeyboard);
 
-function startGame(event){
+function checkKeyboard(event){
     if(event.key === "a" || event.key === "A" || event.key === "ฟ" || event.key === "ฤ" || answers.length != 0){
-        document.querySelector(".detail").style.visibility = "hidden";
-        document.removeEventListener("keydown", startGame);
-        answers = [];
-        level = 1;
-        count = 0;
-        addAnswer();
+        startGame();
     }
+}
+
+function startGame(){
+    document.querySelector(".simon-button").innerHTML = "Restart";
+    document.querySelectorAll(".simon-button")[0].style.visibility = "hidden";
+    document.querySelectorAll(".simon-button")[1].style.visibility = "hidden";
+    // document.querySelector(".detail").style.visibility = "hidden";
+    document.removeEventListener("keydown", startGame);
+    answers = [];
+    level = 1;
+    count = 0;
+    addAnswer();
 }
 
 function activateClickInput(){
@@ -23,11 +30,9 @@ function activateClickInput(){
             if(canClick){
                 buttonEffect(parseInt(this.textContent));
                 if(this.textContent == answers[count]){
-                    console.log(true);
                     count++;
                 }
                 else{
-                    console.log(false);
                     gameOver();
                 }
                 if(count >= answers.length){
@@ -46,11 +51,8 @@ function addAnswer(){
     document.querySelector(".simon-game-title").innerHTML = "Level " + level++;
 
     setTimeout(() => {
-        console.log(answers);
         buttonEffect(answers[answers.length-1]);
-        setTimeout(() => {
-            canClick = true;
-        }, 1000);
+        canClick = true;
     }, 1000);
 }
 
@@ -64,17 +66,23 @@ function buttonEffect(whichButton){
 
 function gameOver(){
     document.querySelector(".simon-game-title").innerHTML = "Gameover at level " + --level;
-    document.querySelector(".detail").style.visibility = "visible";
+    // document.querySelector(".detail").style.visibility = "visible";
     canClick = false;
     document.addEventListener("keydown", startGame);
-}
-
-function test(){
-    console.log("Test");
+    document.querySelectorAll(".simon-button")[0].style.visibility = "visible";
+    document.querySelectorAll(".simon-button")[1].style.visibility = "visible";
 }
 
 var toggle = document.querySelector(".simon-switch");
 toggle.onclick = function(){
     document.querySelector("body").classList.toggle("dark-mode");
     document.querySelector(".simon-game-title").classList.toggle("dark-mode");
+    // document.querySelector(".detail").classList.toggle("dark-mode");
+    document.querySelectorAll(".simon-button")[0].classList.toggle("btn-outline-dark");
+    document.querySelectorAll(".simon-button")[1].classList.toggle("btn-outline-dark");
+}
+
+var start_button = document.querySelectorAll(".simon-button")[0];
+start_button.onclick = function(){
+    startGame();
 }

@@ -18,9 +18,18 @@ body {
   margin: 20px 0 20px;
 }
 
+.detail{ 
+  font-size: 1.5vw; 
+  visibility: hidden;
+  font-family: "Press start 2P", cursive;
+}
+
 @media (max-width: 1080px){
   .simon-game-title {
     font-size: 2.5rem;
+  }
+  .detail{
+    font-size: 1rem;
   }
 }
 
@@ -33,6 +42,11 @@ body {
   border-radius: 40px;
   border: 10px solid;
   margin: 1%;
+}
+
+.simon-button {
+  margin: 0 5px 20px;
+  visibility: visible;
 }
 
 .simon-nav {
@@ -104,11 +118,4 @@ body {
   .buttons2 {
     width: 80%;
   }
-}
-
-.detail{
-  color: white; 
-  font-size: 1.5vw; 
-  visibility: hidden;
-  font-family: "Press start 2P", cursive;
 }
