@@ -39,14 +39,18 @@
                   <li class="nav-item">
                     <div class="form-check form-switch simon-switch">
                         <span style="color: rgba(255, 255, 255, 0.55)">Night mode</span>
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                        <input class="form-check-input simon-switch-mode" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
                         <!-- <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> -->
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
-          </nav>
+        </nav>
+
+        <div class="howto container-fluid" style="position: absolute; width: 100%; text-align: center; display: none;">
+          <img src="simongame-images/HowToPlay.jpg" alt="HowToPlay Image" style="width: 25rem; border-radius: 10px; margin-top: 15%;">
+        </div>
 
         <div class="buttons">
             <h1 class="simon-game-title">
@@ -55,7 +59,7 @@
                 <img class="prohibite" scr="simongame-images/no-stopping.png"> -->
             </h1>
             <button type="button" class="btn btn-outline-light btn-lg simon-button">Start</button>
-            <button type="button" class="btn btn-outline-light btn-lg simon-button">How to play</button>
+            <button type="button" class="btn btn-outline-light btn-lg simon-button howto-button">How to play</button>
             <!-- <p class="detail">Press any key to restart</p> -->
             <div class="buttons2">
                 <div class="simon-game-button a"><p style="display: none;">1</p></div>

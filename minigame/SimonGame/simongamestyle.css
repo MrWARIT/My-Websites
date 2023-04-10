@@ -3,9 +3,13 @@ body {
   color: white; 
 }
 
-.dark-mode {
+.dark-mode-background {
   background-color: rgb(194, 230, 255);
   color: black;
+}
+
+.wrong-background {
+  background-color: red;
 }
 
 .buttons {

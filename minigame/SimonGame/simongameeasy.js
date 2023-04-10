@@ -28,11 +28,13 @@ function activateClickInput(){
     for(var i = 0; i < document.querySelectorAll(".simon-game-button").length; i++){
         document.querySelectorAll(".simon-game-button")[i].addEventListener("click", function(){
             if(canClick){
-                buttonEffect(parseInt(this.textContent));
+                buttonEffect(parseInt(this.textContent), "player");
                 if(this.textContent == answers[count]){
                     count++;
                 }
                 else{
+                    var wrongAudio = new Audio("sounds/wrong.mp3");
+                    wrongAudio.play();
                     gameOver();
                 }
                 if(count >= answers.length){
@@ -51,12 +53,21 @@ function addAnswer(){
     document.querySelector(".simon-game-title").innerHTML = "Level " + level++;
 
     setTimeout(() => {
-        buttonEffect(answers[answers.length-1]);
+        buttonEffect(answers[answers.length-1], "bot");
         canClick = true;
     }, 1000);
 }
 
-function buttonEffect(whichButton){
+function buttonEffect(whichButton, from){
+    if(from == "player"){
+        var playerAudio = new Audio("sounds/green.mp3");
+        playerAudio.play();
+    }
+    else{
+        var botAudio = new Audio("sounds/yellow.mp3");
+        botAudio.play();
+    }
+
     document.querySelector("." + String.fromCharCode(96 + whichButton)).classList.add("pressed");
 
     setTimeout(() => {
@@ -65,6 +76,10 @@ function buttonEffect(whichButton){
 }
 
 function gameOver(){
+    document.querySelector("body").classList.add("wrong-background");
+    setTimeout(() => {
+        document.querySelector("body").classList.remove("wrong-background");
+    }, 200);
     document.querySelector(".simon-game-title").innerHTML = "Gameover at level " + --level;
     // document.querySelector(".detail").style.visibility = "visible";
     canClick = false;
@@ -73,14 +88,31 @@ function gameOver(){
     document.querySelectorAll(".simon-button")[1].style.visibility = "visible";
 }
 
-var toggle = document.querySelector(".simon-switch");
+var toggle = document.querySelector(".simon-switch-mode");
 toggle.onclick = function(){
-    document.querySelector("body").classList.toggle("dark-mode");
-    document.querySelector(".simon-game-title").classList.toggle("dark-mode");
+    document.querySelector("body").classList.toggle("dark-mode-background");
     // document.querySelector(".detail").classList.toggle("dark-mode");
     document.querySelectorAll(".simon-button")[0].classList.toggle("btn-outline-dark");
     document.querySelectorAll(".simon-button")[1].classList.toggle("btn-outline-dark");
 }
+
+var howtoToggle = document.querySelector(".howto-button");
+howtoToggle.onclick = function(){
+    document.querySelector(".howto").style.display = "block";
+}
+
+var howtoImage = document.querySelector(".howto");
+howtoImage.onclick = function(){
+    document.querySelector(".howto").style.display = "none";
+}
+
+// function darkMode() {
+//     document.querySelector("body").classList.toggle("dark-mode");
+//     document.querySelector(".simon-game-title").classList.toggle("dark-mode");
+//     // document.querySelector(".detail").classList.toggle("dark-mode");
+//     document.querySelectorAll(".simon-button")[0].classList.toggle("btn-outline-dark");
+//     document.querySelectorAll(".simon-button")[1].classList.toggle("btn-outline-dark");
+// }
 
 var start_button = document.querySelectorAll(".simon-button")[0];
 start_button.onclick = function(){
