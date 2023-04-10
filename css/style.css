@@ -1,0 +1,88 @@
+body {
+    color: #40514E;
+    margin: 0;
+    display: block;
+    /* background-color: #33003d; */
+    text-align: center;
+    font-family: 'Alkatra', cursive;
+}
+h1 {
+    color: rgb(0, 205, 137);
+}
+h2 {
+    color: rgb(0, 205, 137);
+    font-size: 2rem;
+    font-weight: 100;
+}
+h3 {
+    color: rgb(0, 205, 137);
+    font-weight: 100;
+}
+a {
+    color: black;
+}
+
+
+
+.bottom-container{
+    background-color: rgb(62, 254, 190);
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+.binary-code-image{
+    position:absolute;
+    top: 35%;
+    left: 25%;
+}
+.cloud-data-image{
+    position: absolute;
+    top: 66%;
+    left: 60%;
+}
+.computer-image{
+    /* position: absolute; */
+    /* top: 59%;
+    left: 40%; */
+    margin: 70px auto auto auto;
+    width: 27%;
+}
+.database-image{
+    margin-left: 30px;
+}
+.dottedhr {
+    /* color: white; */
+    border-style: dotted;
+    border-width: 10px 0px 0px;
+    width: 50%;
+}
+.head-topic{
+    padding-top: 100px;
+    font-size: 4rem;
+}
+.middle-container{
+}
+.skill{
+    width: 50%; 
+    margin: 60px auto 120px auto;
+    text-align: left;
+    font-size: 1.2rem;
+}
+.skill-detail{
+    color: black;
+}
+.server-image{
+    position: absolute;
+    top: 66%;
+    left: 60%;
+}
+.top-container{
+    background-color:rgb(213, 255, 241);
+    width: 100%;
+    height: 750px;
+    margin-top: 0;
+    position: relative;
+}
+.webpage-image{
+    margin-right: 30px;
+}

@@ -1,0 +1,114 @@
+body {
+  background-color: rgb(3, 3, 71);
+  color: white; 
+}
+
+.dark-mode {
+  background-color: rgb(194, 230, 255);
+  color: black;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.simon-game-title{
+  font-size: 3.5vw;
+  font-family: "Press start 2P", cursive;
+  margin: 20px 0 20px;
+}
+
+@media (max-width: 1080px){
+  .simon-game-title {
+    font-size: 2.5rem;
+  }
+}
+
+.simon-game-button {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  color: black;
+  display: inline-block;
+  border-radius: 40px;
+  border: 10px solid;
+  margin: 1%;
+}
+
+.simon-nav {
+  background-color: black;
+  padding: 0;
+  margin-bottom: 3%;
+}
+
+.simon-nav-item {
+  margin-right: 10px;
+}
+
+.cursor{
+  width: 3%;
+  margin-left: 3%;
+  /* transform: rotate(-20deg); */
+}
+
+.a {
+  background-color: red;
+}
+
+.b {
+  background-color: green;
+}
+
+.c {
+  background-color: yellow;
+}
+
+.d {
+  background-color: blue;
+}
+
+.e {
+  background-color: purple;
+}
+
+.f {
+  background-color: orange;
+}
+
+.pressed{
+  background-color: rgb(197, 197, 197);
+  box-shadow: 0 0 20px white;
+}
+
+.simon-switch{
+  margin-top: 9px;
+}
+
+.buttons2{
+  text-align: center; width: 40%; margin: 0 auto 0;
+}
+
+@media (max-width: 1280px){
+  .buttons2 {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1020px){
+  .buttons2 {
+    width: 60%;
+  }
+}
+
+@media (max-width: 835px){
+  .buttons2 {
+    width: 80%;
+  }
+}
+
+.detail{
+  color: white; 
+  font-size: 1.5vw; 
+  visibility: hidden;
+  font-family: "Press start 2P", cursive;
+}

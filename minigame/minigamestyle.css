@@ -1,0 +1,47 @@
+body {
+    background-color: rgb(3, 3, 71);
+    color: white;
+}
+
+#minigame-title{
+    font-family: "Press start 2P", cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin: 5% auto 0;
+}
+
+.simon-nav {
+    background-color: black;
+    padding: 0;
+    margin-bottom: 3%;
+  }
+  
+  .simon-nav-item {
+    margin-right: 10px;
+  }
+  .simon-switch{
+    margin-top: 9px;
+  }
+
+.minigame-game {
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    border: 10px solid;
+    border-color: black;
+    color: black;
+    display: flex;
+    margin: 3%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.minigame-game a {
+    color: black;
+    text-decoration: none;
+}
+
+.minigame-game a:hover{
+    color: blue;
+}

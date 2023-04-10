@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Simon Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="simongame-images/button.png">
+
+        <!-- font-family -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap and myStyle -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+        <link href="simongamestyle.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-dark simon-nav">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Simon Game</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link simon-nav-item" href="../minigameindex.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link simon-nav-item" href="#">How to play</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link simon-nav-item" href="#">How to code</a>
+                  </li>
+                  <li class="nav-item">
+                    <div class="form-check form-switch simon-switch">
+                        <span style="color: rgba(255, 255, 255, 0.55)">Night mode</span>
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                        <!-- <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label> -->
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+        <div class="buttons">
+            <h1 class="simon-game-title">
+                Press A to Start 
+                <!-- <img class="cursor" src="simongame-images/cursor-white.png" alt="cursor">
+                <img class="prohibite" scr="simongame-images/no-stopping.png"> -->
+            </h1>
+            <p class="detail">Press any key to restart</p>
+            <div class="buttons2">
+                <div class="simon-game-button a"><p style="display: none;">1</p></div>
+                <div class="simon-game-button b"><p style="display: none;">2</p></div>
+                <div class="simon-game-button c"><p style="display: none;">3</p></div>
+                <div class="simon-game-button d"><p style="display: none;">4</p></div>
+                <div class="simon-game-button e"><p style="display: none;">5</p></div>
+                <div class="simon-game-button f"><p style="display: none;">6</p></div>
+            </div>
+        </div>
+
+        <script
+    src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
+    integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="
+    crossorigin="anonymous"></script>
+        <script type="text/javascript" src="simongameeasy.js"></script>
+    </body>
+    <!-- <footer>
+        <p>Cursor credit</p>
+        <p><a href="https://www.flaticon.com/free-icons/cursor" title="cursor icons">Cursor icons created by Pixel perfect - Flaticon</a></p>
+        <p>Prohibition credit</p>
+        <p><a href="https://www.flaticon.com/free-icons/stop-sign" title="stop sign icons">Stop sign icons created by IconsBox - Flaticon</a></p>
+        <p>button credit</p>
+        <p><a href="https://www.flaticon.com/free-icons/button" title="button icons">Button icons created by Freepik - Flaticon</a></p>
+    </footer> -->
+</html>
