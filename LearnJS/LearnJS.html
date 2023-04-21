@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Learn JavaScript</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="LearnJS.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Welcome to Learn JavaScript space.</h1>
+        <button class="learnJS-button" type="button" style="display:block;" onclick="testalertFunction()">Click here</button>
+        <p id="test1" style="display:inline;">This is a content that will change if you click the button ></p>
+        <button style="display: inline;" type="button" onclick="changeParagraph1()">Click to change</button>
+        <hr>
+        <button class="learnJS-button" type="button" onclick="writeFunction()">document.write(---); will overwrite everything if it's called after the document have finished loading</button>
+        <button class="learnJS-button" type="button" onclick="window.print()">In case you want to print this page, use window.print();</button>
+        <button class="learnJS-button" type="button" onclick="showFunctionFromObject()">Click this will call function in object</button>
+        <p onclick="this.innerHTML = Date()">onclick is one of the HTML events, which can be applied to button and other element such as this paragraph</p>
+        <p onmouseover="this.innerHTML = Date()">This paragraph use onmouseover</p>
+        <p onmouseout="this.innerHTML = 'Mouse out'">Mouse over and mouse out</p>
+        <p>This paragraph just talk about string and object "String". If you create... let x = "test"; let y = new String("test"); >>> 
+            x == y >>> true, x === y >>> false
+        </p>
+        <hr>
+        <form>
+            <input type="checkbox" id="vehicle1">
+            <label id="vehicle1-label" for="vehicle1"> I have a bike</label><br>
+            <input type="checkbox" id="vehicle2">
+            <label id="vehicle2-label" for="vehicle2"> I have a car</label><br>
+            <input type="checkbox" id="vehicle3">
+            <label id="vehicle3-label" for="vehicle3"> I have a boat</label><br><br>
+        </form>
+        <button type="button" class="learnJS-button" onclick="showVehicle()">Show vehicles</button>
+        <p id="showVehicle-id"></p>
+
+        <a href="LearnJS-2.html">Go to Learn JavaScript part2 (array date math if else loop)</a>
+
+        <script>
+            function testalertFunction(){
+                alert("Hi");
+            }
+        </script>
+        <script src="LearnJS.js"></script>
+    </body>
+</html>

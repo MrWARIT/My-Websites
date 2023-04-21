@@ -1,0 +1,16 @@
+.roadmap-head-box {
+    width: 12rem;
+    border: 2px solid;
+    text-align: center;
+    margin-bottom: auto;
+    display: inline-block;
+}
+
+.roadmap-head-text {
+    margin: 5% 0;
+}
+
+.roadmap-container {
+    height: 200px;
+    width: 600px;
+}
