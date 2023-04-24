@@ -101,32 +101,76 @@ console.log("arr5.reverse() = " + arr5.reverse());
 console.log("arr5.sort() = " + arr5.sort());
 console.log("arr5.reverse() = " + arr5.reverse());
 console.log("arr5 (after show arr5.sort()) = " + arr5);
-console.log("\"sort\" changed the array");
-console.log(arr5);
-const arr6 = [9, 4, 6, 2, 7];
+console.log("\"sort\" and \"reverse\" changed the array");
+console.log("now arr5 = " + arr5);
+console.log("arr5.sort(function(){return 0.5 - Math.random()}) = " + arr5.sort(function(){return 0.5 - Math.random()}));
+console.log("arr5.sort(function(){return 1}) = " + arr5.sort(function(){return 1}));
+console.log("arr5.sort(function(){return 1}) = " + arr5.sort(function(){return 1}));
+console.log("arr5.sort(function(){return -1}) = " + arr5.sort(function(){return -1}));
+console.log("arr5.sort(function(){return -1}) = " + arr5.sort(function(){return -1}));
+console.log("arr5.sort() = " + arr5.sort());
+console.log("arr5.sort(function(a,b){return a-b}) = " + arr5.sort(function(a,b){return a-b}));
+console.log("arr5.sort(function(a,b){return b-a}) = " + arr5.sort(function(a,b){return b-a}));
+console.log("ตรงนี้น่างงหน่อยๆ สรุปคือถ้าเลลเรียงจากน้อยไปมากแล้ว (a-b < 0) ใช้ compare function จะได้ผลลัพธ์เป็นลำดับเหมือนเดิม")
+console.log("แต่ถ้าไม่เทียบ a-b แต่ใช้ -1 ซึ่งควรจะเหมือนกัน กลายเป็นว่าลำดับสลับ")
+
 console.log("------------Random sort------------");
 console.log("use \"someArray\".sort(function(){return 0.5 - Math.random()} to numerically random sort array");
 console.log("also use Fisher Yates Method (for me, it just switch between each member with random position) which more accurate than above (not sure why)   ");
+
 console.log("-------------------------");
 console.log("Math.max(1, 5, 6) = " + Math.max(1, 5, 6));
 console.log("Math.max.apply(null, [1, 5, 6]) = " + Math.max.apply(null, [1, 5, 6]));
 
-console.log("------------Sort Object Array------------");
+console.log("------------Sort Object Array (number property)------------");
 const employee = [
     {name: "Riw", age: 22},
     {name: "Ant", age: 23},
     {name: "Yo", age: 21}
 ];
+console.log("create new array \"employee\" without sort")
 console.log(employee);
-console.log(employee.sort(function(a,b){return a.age - b.age}));
+console.log("asign new array equal to employee.sort(function...)")
+const newArr = employee.sort(function(a,b){return a.age - b.age});
+// console.log(employee.sort(function(a,b){return a.age - b.age}));
 console.log(employee);
-console.log(employee.sort(function(a,b){return 1}));
-employee[0].name = "Ram";
+// console.log(employee);
+// console.log(employee.sort(function(a,b){return 1}));
+// employee[0].name = "Ram";
+console.log("//the object is printed the same??? (final result)")
+
+console.log("------------Sort Object Array (alphabet property)------------");
+const animalsObject = [
+    {name: "cat", amount: 4},
+    {name: "dog", amount: 3},
+    {name: "otter", amount: 10},
+];
+console.log("create animalsObject array");
+console.log(animalsObject);
+console.log("c" < "d");
+console.log("d" < "o");
+console.log(animalsObject.sort(function(a,b){
+    let x = a.name.toLowerCase();
+    let y = b.name.toLowerCase();
+    if(x > y) {return 1;}
+    if(x < y) {return -1;}
+    return 0;
+}));
+console.log("สรุปว่าจะว่า a,b a-b คือน้อยไปมาก ทั้งตัวเลขและตัวอักษร ส่วนเลข 1 เหมือนเดิม -1 = reverse");
+
+
+console.log("-------------------------------------------------------");
+console.log("-------------------------------------------------------");
+console.log("-------------------------------------------------------");
+
+
+
 
 function sayHey(animal){
     console.log(`I'm a ${animal}.`);
 }
-console.log("//the object is printed the same???")
+
+
 
 //arrays are a special type of objects. The typeof will return "object" however, arrays use numbers to access its "elements".
 //Objects use names to access its "members"

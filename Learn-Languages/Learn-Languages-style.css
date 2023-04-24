@@ -1,0 +1,114 @@
+.ul-sidebar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    /* width: 250px; */
+    width: 230px;
+    background-color: #232323;
+    position: fixed;
+    bottom: 0;
+    height: 92%;
+    overflow: auto;
+    transition: 0.2s;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.li-sidebar p {
+    display: block;
+    color: #ffffff;
+    padding: 8px 16px 8px 40px;
+    text-decoration: none;
+    margin: 0;
+}
+  
+.li-sidebar .p-sidebar:hover:not(.active) {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+.p-sidebar[title] {
+    coloe: red;
+    cursor: pointer;
+}
+
+.head-sidebar {
+    padding: 8px 16px;
+    margin: 10px 0;
+}
+
+.code-zone {
+    height: 660px;
+    padding: 10px 10px;
+}
+
+.myTextarea{
+    width: 100%; 
+    height: 85%; 
+    padding: 10px; 
+    resize: none; 
+    text-decoration: none;
+}
+
+@media (max-width: 768px){
+    .code-zone {
+        height: 305px;
+    }
+}
+
+#CodeAndOutput {
+    position: fixed; 
+    bottom: 0; 
+    right: 0; 
+    height: 92%; 
+    width: calc(100% - 230px); 
+    background-color: rgb(219, 219, 219);
+}
+
+#hamburger {
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 850px){
+    #hamburger{
+        display: inline-block;
+    }
+    #CodeAndOutput{
+        width: 100%;
+    }
+}
+
+@media (min-width: 850px){
+    .ul-sidebar{
+        width: 230px!important;
+    }
+}
+
+.current-active {
+    background-color: rgb(62, 62, 223);
+}
+
+.sidebarHide {
+    width: 0;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #424242; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(62, 62, 223); 
+}
