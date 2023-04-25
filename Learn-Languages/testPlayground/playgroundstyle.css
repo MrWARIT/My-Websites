@@ -1,0 +1,24 @@
+header#playground_header {
+    background-color: #000000;
+    color: white;
+}
+
+.mytextarea {
+    background-color: rgb(33, 32, 32);
+    resize: none;
+    /* width: 33%; */
+    padding: 10px;
+    /* position: flex; */
+    color: white;
+}
+
+#code_output {
+}
+
+#code {
+    position: fixed;
+    bottom: 0;
+    height: 40vh;
+    border: unset;
+    background-color: rgb(231, 231, 250);
+}

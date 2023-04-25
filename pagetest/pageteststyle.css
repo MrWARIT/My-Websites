@@ -1,0 +1,16 @@
+.myTextarea {
+    resize: none;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(33, 35, 39);
+    color: white;
+}
+
+.myIframe {
+    width: 620px;
+    height: 200px;
+}
+
+#output {
+    background-color: rgb(255, 255, 255);
+}

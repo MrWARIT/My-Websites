@@ -1,3 +1,5 @@
+var live = false;
+
 for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
     document.querySelectorAll(".p-sidebar")[i].addEventListener("click", function(){
         try {
@@ -8,7 +10,7 @@ for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
         }
         this.classList.add("current-active");
         let selectedCode = "Javascript_" + this.title;
-        document.querySelector("#state").value = eval(selectedCode);
+        document.querySelector("#html-code").value = eval(selectedCode);
         runMyFunction();
     });
 }
@@ -26,11 +28,45 @@ for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
 //     }
 // }
 
-function runMyFunction(){
-    document.getElementById("output").innerHTML = "";
-    let formInput = document.getElementById("state");
-    // console.log(formInput.value);
-    outputZone(formInput.value);
+// function runMyFunction(){
+//     let formInput = document.getElementById("html-code");
+//     // console.log(formInput.value);
+//     outputZone(formInput.value);
+// }
+
+function compile(test){
+    let html = document.getElementById("html-code").value;
+    let css = document.getElementById("css-code").value;
+    let javascript = document.getElementById("javascript-code").value;
+
+    document.getElementById("code-output").remove();
+    document.getElementById("iframe-container").innerHTML = `<iframe id="code-output"></iframe>`;
+    let code_output = document.getElementById("code-output").contentWindow.document;
+    code_output.open();
+    code_output.writeln(html + "<style>" + css + "</style>" + "<script>" + javascript + "</script>");
+    code_output.close();
+}
+
+            // // if(test == "dev") prompt("This is the array of the code", "[\`" + html + "\`, \`" + css + "\`, \`" + javascript + "\`];");
+
+    // document.body.onkeyup = function(){
+    //     code_output.open();
+    //     code_output.writeln(html + "<style>" + css + "</style>" + "<script>" + javascript + "</script>");
+    //     code_output.close();
+    // }
+// }
+
+function liveCompile(element){
+    document.querySelector("#run-button").classList.toggle("disabled");
+    element.classList.toggle("active");
+    if(live == false){
+        document.body.addEventListener("keyup", compile);
+        live = true;
+    }
+    else{
+        document.body.removeEventListener("keyup", compile)
+        live = false;
+    }
 }
 
 function outputZone(inputStatement){
@@ -57,103 +93,66 @@ function hideSidebar() {
     document.querySelector(".ul-sidebar").classList.add("sidebarHide");
 }
 
-runMyFunction();
+function selectCode(codeType) {
+    document.getElementById("html-input-btn").classList.remove("active");
+    document.getElementById("css-input-btn").classList.remove("active");
+    document.getElementById("javascript-input-btn").classList.remove("active");
+    document.getElementById("html-input").classList.add("code-hide");
+    document.getElementById("css-input").classList.add("code-hide");
+    document.getElementById("javascript-input").classList.add("code-hide");
+    document.getElementById(codeType + "-btn").classList.add("active");
+    document.getElementById(codeType).classList.remove("code-hide");
+}
+
+selectCode('html-input');
+
+// runMyFunction();
 
 window.onresize = hideSidebar();
 
+
+
+
+function update(text, language){
+    let result_element = document.querySelector("#highlighting-content-" + language);
+    // Handle final newlines
+    if(text[text.length-1] == "\n"){
+        text += " ";
+    }
+    //update code
+    result_element.innerHTML = text.replace(new RegExp("&", "g"), "&amp;").replace(new RegExp("<", "g"), "&lt;");
+    //Systax Highlight
+    Prism.highlightElement(result_element);
+}
+
+function syn_scroll(element, language){
+    let result_element = document.querySelector("#highlighting-" + language);
+    // Get and set x and y.
+    result_element.scrollTop = element.scrollTop;
+    result_element.scrollLeft = element.scrollLeft;
+}
+
+function check_tab(element, language, event) {
+    let code = element.value;
+    if(event.key == "Tab") {
+      /* Tab key pressed */
+      event.preventDefault(); // stop normal
+      let before_tab = code.slice(0, element.selectionStart); // text before tab
+      let after_tab = code.slice(element.selectionEnd, element.value.length); // text after tab
+      let cursor_pos = element.selectionStart + 1; // where cursor moves after tab - moving forward by 1 char to after tab
+      element.value = before_tab + "\t" + after_tab; // add tab char
+      // move cursor
+      element.selectionStart = cursor_pos;
+      element.selectionEnd = cursor_pos;
+      update(element.value, language); // Update text to include indent
+    }
+  }
+
+
+
+
 // data zone
 
-let Javascript_Array_AccessElements = `const animals = ["cat", "dog", "otter", "lion", "seal"];
-myconsole("animals = " + animals);
-animals[1] = "cow";
-myconsole("animals = " + animals);
-animals[7] = "mouse";
-myconsole("animals = " + animals);`
-
-let Javascript_Array_PushAndPop = `const animals = ["cat", "dog", "otter"];
-myconsole("animals = " + animals);
-animals.push("bat");
-myconsole("animals = " + animals.join(", "));
-animals.pop();
-myconsole("animals = " + animals.join(" * "))`
-
-let Javascript_Array_SliceAndSplice = `const animals = ["cat", "dog", "otter", "lion", "seal"];
-const animals2 = animals.slice(1, 4);
-myconsole(animals);
-myconsole(animals2);`
-
-let Javascript_Array_ForEach = `const animals = ["cat", "dog", "otter", "lion", "seal"];
-animals.forEach(printElements);
-
-function printElements(value, index, array) {
-    myconsole(value + " -- " + index + " -- " + array);
-}`
-
-let Javascript_Array_Map = `const numbers1 = [1, 5, 3, 8, 4];
-const numbers2 = numbers1.map(power2);
-const numbers3 = numbers1.map((value, index, array) =>
-value * array[index]);
-
-function power2(value, index, array) {
-    return value * array[index];
-}
-console.log("numbers1 = " + numbers1);
-console.log("numbers2 = " + numbers2);
-console.log("numbers3 = " + numbers3);`
-
-let Javascript_Array_Filter = `const numbers1 = [1, 5, 3, 8, 4];
-const numbers2 = numbers1.map(power2);
-const numbers3 = numbers1.filter(filterFunction);
-
-function power2(value, index, array) {
-    return (value > 3) && (index > 1);
-}
-
-function filterFunction(value, index, array){
-    return (value > 3) && (index > 1);
-}
-
-console.log("numbers1 = " + numbers1);
-console.log("numbers2 = " + numbers2);
-console.log("numbers3 = " + numbers3);`
-
-let Javascript_Array_ReduceAndReduceRight = `const numbers1 = [1, 2, 3, 4, 5];
-let sum = numbers1.reduce(findSum);
-let sumplus100 = numbers1.reduce(findSum, 100);
-let sumUntilOver10 = numbers1.reduce(findSum2);
-let sumRightUntilOver10 = numbers1.reduceRight(findSum2);
-
-function findSum(total, value, index, array) {
-    return total + value;
-}
-
-function findSum2(total, value) {
-    if (total < 10) { total += value; }
-    return total;
-}
-
-console.log(sum);
-console.log(sumplus100);
-console.log(sumUntilOver10);
-console.log(sumRightUntilOver10);`
-
-let Javascript_Array_EveryAndSome = `const numbers1 = [1, 2, 3, 4, 5];
-let allElementOver3 = numbers1.every(over3);
-let someElementOver3 = numbers1.some(over3);
-
-function over3(value) {
-    return value > 3;
-}
-
-console.log(allElementOver3);
-console.log(someElementOver3);`
-
-let Javascript_Arraa_IndexOfAndLastIndexOf = `const animals = ["cat", "cow", "rat", "cat", "cat"];
-
-console.log(animals.indexOf("cat"));
-
-console.log(animals.lastIndexOf("cat"));
-
-console.log(animals.indexOf("cat", 1));
-
-console.log(animals.indexOf("cat", -1));`
+let Javascript_document_query = [`<h1>Test</h1>`, `h1 {
+	color: red;
+}`, `console.log("Hi");`];

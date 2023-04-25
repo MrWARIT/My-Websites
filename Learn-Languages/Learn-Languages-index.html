@@ -6,13 +6,15 @@
     <title>Bootstrap demo</title>
     <!-- Bootstrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- Prism link -->
+    <link rel="stylesheet" href="../prism/prism.css">
     <!-- My style -->
     <link rel="stylesheet" href="Learn-Languages-style.css">
   </head>
-  <body style="background-color: rgb(222, 220, 220)">
+  <body>
 
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="background-color: rgb(27, 27, 27)!important; height: 8%;">
-        <div class="container-fluid"  style="background-color: rgb(27, 27, 27);">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="background-color: black!important; height: 8%; margin: 0;">
+        <div class="container-fluid" style="background-color: black;">
           <div>
             <a class="navbar-item my-navbar-icon" id="hamburger" onclick="showAndHide()"><i class="fa-solid fa-lg fa-bars" style="color: #ffffff; margin: 10px;"></i></a>
             <a class="navbar-item my-navbar-icon" href="../index.html"><i class="fa-solid fa-lg fa-house" style="color: #ffffff; margin: 10px;"></i></a>
@@ -23,25 +25,28 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                <a class="nav-link" href="#">HTML</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">CSS</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Javascript</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Apply</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">JQuery</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Python</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">SQL</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">PHP</a>
+                <a class="nav-link" href="testPlayground/playground.html">Playground</a>
               </li>
             </ul>
-            <form class="d-flex" role="search" style="margin-bottom: 10px;">
+            <!-- <form class="d-flex" role="search" style="margin: 10px 0;">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
+            </form> -->
           </div>
         </div>
     </nav>
@@ -50,7 +55,7 @@
 
     <ul class="ul-sidebar">
 
-        <li><h5 class="head-sidebar" style="color:white;">Array</h5></li>
+        <li><h5 class="head-sidebar">Array</h5></li>
         <li class="li-sidebar"><p class="p-sidebar" title="Array_AccessElements">Access Element</p></li>
         <li class="li-sidebar"><p class="p-sidebar" title="Array_PushAndPop">push & pop</p></li>
         <li class="li-sidebar"><p class="p-sidebar" title="Array_SliceAndSplice">slice & splice</p></li>
@@ -61,75 +66,60 @@
         <li class="li-sidebar"><p class="p-sidebar" title="Array_EveryAndSome">every & some</p></li>
         <li class="li-sidebar"><p class="p-sidebar" title="Arraa_IndexOfAndLastIndexOf">indexOf & lastIndexOf</p></li>
 
-        <li><h5 class="head-sidebar" style="color:white;">Variable</h5></li>
+        <li><h5 class="head-sidebar">Variable</h5></li>
         <li class="li-sidebar"><p class="p-sidebar">Topic 1</p></li>
         <li class="li-sidebar"><p class="p-sidebar">Topic 2</p></li>
         <li class="li-sidebar"><p class="p-sidebar">Topic 3</p></li>
 
-        <li><h5 class="head-sidebar" style="color:white;">String</h5></li>
+        <li><h5 class="head-sidebar">String</h5></li>
         <li class="li-sidebar"><p class="p-sidebar">Topic 1</p></li>
         <li class="li-sidebar"><p class="p-sidebar">Topic 2</p></li>
         <li class="li-sidebar"><p class="p-sidebar">Topic 3</p></li>
 
     </ul>
 
-
-
-    <!-- <div class="container-fluid" style="position: fixed; right: 0; bottom: 0; width: 70%; background-color: blue; height: 80%;">
-        <div>
-            <h4 style="position: fixed; left: 260px; top: 68px; background-color: white; padding: 10px; border-radius: 10px; width: 450px;">code here</h4>
-        </div>
-        <div>
-            <h4 style="position: fixed; right: 10px; top: 68px; background-color: white; padding: 10px; border-radius: 10px; width: 450px;">code here</h4>
-        </div>
-    </div> -->
-
-
-    <!-- <div class="container-fluid bg-danger">
-        <div class="row">
-            <div class="col bg-warning">
-                <p>Test1</p>
-            </div>
-            <div class="col bg-dark text-white">
-                <p>Test2</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col bg-warning">
-                <p>Test1</p>
-            </div>
-            <div class="col bg-dark text-white">
-                <p>Test2</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col bg-warning">
-                <p>Test1</p>
-            </div>
-            <div class="col bg-dark text-white">
-                <p>Test2</p>
-            </div>
-        </div>
-    </div> -->
-
-
-
     <div id="CodeAndOutput">
-        <div class="container-fluid bg-danger">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-6 code-zone" style="background-color: rgb(218, 218, 218);">
-                    <!-- <form style="width: 100%; height: 50%;">
-                        <input id="inputForm" type="text" style="width: 100%;">
-                    </form> -->
-<textarea class="myTextarea" id="state" name="state" spellcheck="false">
-myconsole("Welcome!");
-</textarea>
-                    <button class="btn btn-dark" type="button" onclick="runMyFunction()">RUN</button>
+                <div class="col-lg-6 col-md-6 code-zone">
+
+                    <div id="html-input">
+                      <textarea class="editing" id="html-code" placeholder="HTML" spellcheck="false" oninput="update(this.value, 'html'); syn_scroll(this, 'html');" onscroll="syn_scroll(this, 'html');" onkeydown="check_tab(this, 'html', event);"></textarea>
+
+                      <pre id="highlighting-html" aria-hidden="true">
+                        <code class="language-html" id="highlighting-content-html"></code>
+                      </pre>
+                    </div>
+
+                    <div id="css-input">
+                      <textarea class="editing" id="css-code" placeholder="CSS" spellcheck="false" oninput="update(this.value, 'css'); syn_scroll(this, 'css');" onscroll="syn_scroll(this, 'css');" onkeydown="check_tab(this, 'css', event);"></textarea>
+
+                      <pre id="highlighting-css" aria-hidden="true">
+                        <code class="language-css" id="highlighting-content-css"></code>
+                      </pre>
+                    </div>
+
+                    <div id="javascript-input">
+                      <textarea class="editing" id="javascript-code" placeholder="Javascript" spellcheck="false" oninput="update(this.value, 'js'); syn_scroll(this, 'js');" onscroll="syn_scroll(this, 'js');" onkeydown="check_tab(this, 'js', event);"></textarea>
+
+                      <pre id="highlighting-js" aria-hidden="true">
+                        <code class="language-javascript" id="highlighting-content-js"></code>
+                      </pre>
+                    </div>
+
+                    <div class="button-container">
+                      <button class="btn btn-outline-dark" id="html-input-btn" type="button" onclick="selectCode('html-input')">HTML</button>
+                      <button class="btn btn-outline-dark" id="css-input-btn" type="button" onclick="selectCode('css-input')">CSS</button>
+                      <button class="btn btn-outline-dark" id="javascript-input-btn" type="button" onclick="selectCode('javascript-input')">Javascript</button>
+                      <button class="btn btn-primary" id="run-button" type="button" onclick="compile()">RUN</button>
+                      <button class="btn btn-outline-danger" type="button" onclick="liveCompile(this)">LIVE</button>
+                      <!-- <button class="btn btn-secondary" id="dev-button" type="button" onclick="compile('dev')">DEV</button> -->
+                    </div>
+
                 </div>
-                <div class="col-lg-6 col-md-6 code-zone" style="background-color: rgb(190, 190, 190)">
-<textarea disabled class="myTextarea" id="output">
-animals = ["cat", "dog", "otter", "bat"]
-</textarea>
+
+                <div class="col-lg-6 col-md-6 code-zone" id="iframe-container" style="padding: 0;">
+                  <iframe id="code-output"></iframe>
                 </div>
             </div>
         </div>
@@ -139,9 +129,12 @@ animals = ["cat", "dog", "otter", "bat"]
 
     <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <!-- Prism script -->
+    <script src="../prism/prism.js"></script>
     <!-- My Script -->
     <script src="Learn-Languages-script.js"></script>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/dacbd94719.js" crossorigin="anonymous"></script>
+
   </body>
 </html>
