@@ -55,9 +55,9 @@
 
 
     <div class="container-fluid CodeAndOutput">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 code-zone">
+        <div class="row" style="height: 100%;">
 
+            <div class="col-lg-6 col-md-6 code-zone">
                 <div id="html-input">
                   <textarea class="editing" id="html-code" placeholder="HTML" spellcheck="false" oninput="update(this.value, 'html'); syn_scroll(this, 'html');" onscroll="syn_scroll(this, 'html');" onkeydown="check_tab(this, 'html', event);"></textarea>
 
@@ -90,12 +90,12 @@
                   <button class="btn btn-outline-danger" type="button" onclick="liveCompile(this)">LIVE</button>
                   <button class="btn btn-secondary" id="dev-button" type="button" onclick="compile('dev')">DEV</button>
                 </div>
-
             </div>
 
             <div class="col-lg-6 col-md-6 code-zone" id="iframe-container" style="padding: 0;">
               <iframe id="code-output"></iframe>
             </div>
+
         </div>
     </div>
 
