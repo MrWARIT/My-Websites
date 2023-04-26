@@ -1,7 +1,6 @@
 // สร้างตัวแปรสถานะ live (run code ตลอดเวลา) เป็น false
 var live = false;
 selectCode('html-input');
-window.onresize = hideSidebar();
 
 // กดเลือกหัวข้อจากเมนูฝั่งซ้าย
 for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
@@ -9,12 +8,9 @@ for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
         // เอา active effect อันเดิมออก (กรณีโหลด page ครั้งแรกจะไม่มี)
         try {
             document.querySelector(".current-active").classList.remove("current-active");
-            console.log("Continue");
-        } catch (error) {
-            console.log("Start");
-        }
+        } catch (error) {}
         // ให้ปุ่มที่กดตอนนี้เป็น active
-        this.classList.add("current-active");
+        if(!this.classList.contains("clear-code-space")) this.classList.add("current-active");
 
         // เอา title มาระบุชื่อตัวแปร array/object ที่จะแยกเป็น HTML, CSS และ Javascript
         let selectedCode = "THAI_Javascript_" + this.title;
@@ -30,7 +26,7 @@ for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
 }
 
 for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
-    document.querySelectorAll(".p-sidebar")[i].addEventListener("click", hideSidebar);
+    document.querySelectorAll(".p-sidebar")[i].addEventListener("click", showAndHide);
 }
 
 // function selectCode(selectedCode){
@@ -62,8 +58,7 @@ function compile(test){
 
 function liveCompile(element){
     document.querySelector("#run-button").classList.toggle("disabled");
-    element.classList.toggle("active");
-    if(live == false){
+    if(!element.classList.contains("active")){
         compile();
         document.body.addEventListener("keyup", compile);
         live = true;
@@ -72,6 +67,7 @@ function liveCompile(element){
         document.body.removeEventListener("keyup", compile)
         live = false;
     }
+    element.classList.toggle("active");
 }
 
 function outputZone(inputStatement){
@@ -91,12 +87,25 @@ function myconsole(inputString){
 }
 
 function showAndHide(){
+    // if(document.querySelector(".ul-sidebar").classList.contains("sidebarHide")){
+    //     // document.querySelector(".CodeAndOutput").addEventListener("click", showAndHide);
+    //     document.querySelector(".ul-sidebar").classList.remove("sidebarHide");
+    //     document.querySelector(".CodeAndOutput").classList.add("fullwidth");
+    // }
+    // else {
+        // try {
+            // document.querySelector(".CodeAndOutput").removeEventListener("click", showAndHide);
+        // } catch {}
+    //     document.querySelector(".ul-sidebar").classList.add("sidebarHide");
+    //     document.querySelector(".CodeAndOutput").classList.remove("fullwidth");
+    // }
     document.querySelector(".ul-sidebar").classList.toggle("sidebarHide");
+    document.querySelector(".CodeAndOutput").classList.toggle("fullwidth");
 }
 
-function hideSidebar() {
-    document.querySelector(".ul-sidebar").classList.add("sidebarHide");
-}
+// function hideSidebar() {
+//     document.querySelector(".ul-sidebar").classList.add("sidebarHide");
+// }
 
 function selectCode(codeType) {
     document.getElementById("html-input-btn").classList.remove("active");
@@ -148,6 +157,11 @@ function check_tab(element, language, event) {
 
 
 // data zone
+
+let THAI_Javascript_Clear = 
+{"html": ``, 
+"css": ``, 
+"javascript": ``};
 
 let THAI_Javascript_HTMLDOM_writeANDwriteln = 
 {"html": `<p>document.write() และ document.writeln() ต่างกันที่ 

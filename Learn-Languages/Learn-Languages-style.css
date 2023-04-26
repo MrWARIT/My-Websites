@@ -19,6 +19,18 @@
     background-color: rgb(62, 62, 223);
 }
 
+.clear-code-space {
+    padding: 10px 10px 0 10px;
+    margin: 0;
+    text-align: center;
+    overflow-x: hidden;
+    font-size: 15px;
+    color: rgb(256,256,256,0.5);
+}
+.clear-code-space:hover{
+    color: red;
+}
+
 .my-navbar-icon {
     color: #ffffff; margin: 10px;
 }
@@ -34,7 +46,7 @@
     bottom: 0;
     height: 92%;
     overflow: auto;
-    transition: 0.2s;
+    transition: 0.5s;
     overflow-x: hidden;
     z-index: 1;
 }
@@ -95,35 +107,29 @@
 }
 
 .CodeAndOutput {
+    transition: 0.5s;
     position: fixed; 
     bottom: 0; 
     right: 0; 
     height: 92%; 
-    width: calc(100% - 230px); 
+    width: 100%;
+    /* width: 100%; */
     background-color: black;
+}
+.fullwidth {
+    width: calc(100% - 230px); 
 }
 
 #hamburger {
     cursor: pointer;
-    display: none;
+    /* display: none; */
 }
 
-@media (max-width: 850px){
-    #hamburger{
-        display: inline-block;
-    }
-    #CodeAndOutput{
-        width: 100%;
+@media (max-width: 950px){
+    .CodeAndOutput{
+        width: 100%!important;
     }
 }
-
-@media (min-width: 850px){
-    .ul-sidebar{
-        width: 230px!important;
-    }
-}
-
-
 
 
 
