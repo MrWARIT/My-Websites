@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Code Room</title>
+    <link rel="icon" type="image/x-icon" href="images/CodeRoomFavicon.png">
     <!-- Bootstrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- Prism link -->
@@ -24,24 +25,12 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#">HTML</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">CSS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Javascript</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Apply</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">JQuery</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="testPlayground/playground.html">Playground</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="#">HTML</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">CSS</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Javascript</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#">Apply</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">JQuery</a></li>
+              <li class="nav-item"><a class="nav-link" href="testPlayground/playground.html">Playground</a></li>
             </ul>
             <!-- <form class="d-flex" role="search" style="margin: 10px 0;">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -55,72 +44,56 @@
 
     <ul class="ul-sidebar">
 
-        <li><h5 class="head-sidebar">Array</h5></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_AccessElements">Access Element</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_PushAndPop">push & pop</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_SliceAndSplice">slice & splice</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_ForEach">forEach</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_Map">map</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_Filter">filter</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_ReduceAndReduceRight">reduce & reduceRight</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Array_EveryAndSome">every & some</p></li>
-        <li class="li-sidebar"><p class="p-sidebar" title="Arraa_IndexOfAndLastIndexOf">indexOf & lastIndexOf</p></li>
-
-        <li><h5 class="head-sidebar">Variable</h5></li>
-        <li class="li-sidebar"><p class="p-sidebar">Topic 1</p></li>
-        <li class="li-sidebar"><p class="p-sidebar">Topic 2</p></li>
-        <li class="li-sidebar"><p class="p-sidebar">Topic 3</p></li>
-
-        <li><h5 class="head-sidebar">String</h5></li>
-        <li class="li-sidebar"><p class="p-sidebar">Topic 1</p></li>
-        <li class="li-sidebar"><p class="p-sidebar">Topic 2</p></li>
-        <li class="li-sidebar"><p class="p-sidebar">Topic 3</p></li>
+        <li><h5 class="head-sidebar">HTML DOM</h5></li>
+        <li><h6 class="subhead-sidebar">HTML Document</h6></li>
+        <li class="li-sidebar"><p class="p-sidebar" title="HTMLDOM_writeANDwriteln">write() & writeln()</p></li>
+        <li class="li-sidebar"><p class="p-sidebar" title="HTMLDOM_getElementANDquerySelector">getElement & querySelector</p></li>
 
     </ul>
 
-    <div id="CodeAndOutput">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 code-zone">
 
-                    <div id="html-input">
-                      <textarea class="editing" id="html-code" placeholder="HTML" spellcheck="false" oninput="update(this.value, 'html'); syn_scroll(this, 'html');" onscroll="syn_scroll(this, 'html');" onkeydown="check_tab(this, 'html', event);"></textarea>
 
-                      <pre id="highlighting-html" aria-hidden="true">
-                        <code class="language-html" id="highlighting-content-html"></code>
-                      </pre>
-                    </div>
+    <div class="container-fluid CodeAndOutput">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 code-zone">
 
-                    <div id="css-input">
-                      <textarea class="editing" id="css-code" placeholder="CSS" spellcheck="false" oninput="update(this.value, 'css'); syn_scroll(this, 'css');" onscroll="syn_scroll(this, 'css');" onkeydown="check_tab(this, 'css', event);"></textarea>
+                <div id="html-input">
+                  <textarea class="editing" id="html-code" placeholder="HTML" spellcheck="false" oninput="update(this.value, 'html'); syn_scroll(this, 'html');" onscroll="syn_scroll(this, 'html');" onkeydown="check_tab(this, 'html', event);"></textarea>
 
-                      <pre id="highlighting-css" aria-hidden="true">
-                        <code class="language-css" id="highlighting-content-css"></code>
-                      </pre>
-                    </div>
-
-                    <div id="javascript-input">
-                      <textarea class="editing" id="javascript-code" placeholder="Javascript" spellcheck="false" oninput="update(this.value, 'js'); syn_scroll(this, 'js');" onscroll="syn_scroll(this, 'js');" onkeydown="check_tab(this, 'js', event);"></textarea>
-
-                      <pre id="highlighting-js" aria-hidden="true">
-                        <code class="language-javascript" id="highlighting-content-js"></code>
-                      </pre>
-                    </div>
-
-                    <div class="button-container">
-                      <button class="btn btn-outline-dark" id="html-input-btn" type="button" onclick="selectCode('html-input')">HTML</button>
-                      <button class="btn btn-outline-dark" id="css-input-btn" type="button" onclick="selectCode('css-input')">CSS</button>
-                      <button class="btn btn-outline-dark" id="javascript-input-btn" type="button" onclick="selectCode('javascript-input')">Javascript</button>
-                      <button class="btn btn-primary" id="run-button" type="button" onclick="compile()">RUN</button>
-                      <button class="btn btn-outline-danger" type="button" onclick="liveCompile(this)">LIVE</button>
-                      <!-- <button class="btn btn-secondary" id="dev-button" type="button" onclick="compile('dev')">DEV</button> -->
-                    </div>
-
+                  <pre id="highlighting-html" aria-hidden="true">
+                    <code class="language-html" id="highlighting-content-html"></code>
+                  </pre>
                 </div>
 
-                <div class="col-lg-6 col-md-6 code-zone" id="iframe-container" style="padding: 0;">
-                  <iframe id="code-output"></iframe>
+                <div id="css-input">
+                  <textarea class="editing" id="css-code" placeholder="CSS" spellcheck="false" oninput="update(this.value, 'css'); syn_scroll(this, 'css');" onscroll="syn_scroll(this, 'css');" onkeydown="check_tab(this, 'css', event);"></textarea>
+
+                  <pre id="highlighting-css" aria-hidden="true">
+                    <code class="language-css" id="highlighting-content-css"></code>
+                  </pre>
                 </div>
+
+                <div id="javascript-input">
+                  <textarea class="editing" id="javascript-code" placeholder="Javascript" spellcheck="false" oninput="update(this.value, 'javascript'); syn_scroll(this, 'javascript');" onscroll="syn_scroll(this, 'javascript');" onkeydown="check_tab(this, 'javascript', event);"></textarea>
+
+                  <pre id="highlighting-javascript" aria-hidden="true">
+                    <code class="language-javascript" id="highlighting-content-javascript"></code>
+                  </pre>
+                </div>
+
+                <div class="button-container">
+                  <button class="btn btn-outline-dark" id="html-input-btn" type="button" onclick="selectCode('html-input')">HTML</button>
+                  <button class="btn btn-outline-dark" id="css-input-btn" type="button" onclick="selectCode('css-input')">CSS</button>
+                  <button class="btn btn-outline-dark" id="javascript-input-btn" type="button" onclick="selectCode('javascript-input')">Javascript</button>
+                  <button class="btn btn-primary" id="run-button" type="button" onclick="compile()">RUN</button>
+                  <button class="btn btn-outline-danger" type="button" onclick="liveCompile(this)">LIVE</button>
+                  <button class="btn btn-secondary" id="dev-button" type="button" onclick="compile('dev')">DEV</button>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 code-zone" id="iframe-container" style="padding: 0;">
+              <iframe id="code-output"></iframe>
             </div>
         </div>
     </div>

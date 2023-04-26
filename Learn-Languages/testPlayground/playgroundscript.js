@@ -1,17 +1,5 @@
-let count = 0;
-
-function compile(){
-    let html = document.getElementById("html");
-    let css = document.getElementById("css");
-    let js = document.getElementById("js");
-    let code = document.getElementById("code").contentWindow.document;
-
-    document.body.onkeyup = function(){
-        count++;
-        code.open();
-        code.writeln(html.value + "<style>" + css.value + "</style>" + "<script>" + js.value + "</script>");
-        code.close();
-    }
-}
-
-compile();
+document.write("test");
+document.write("second line");
+document.write("<br>");
+document.writeln("test");
+document.writeln("second line");
