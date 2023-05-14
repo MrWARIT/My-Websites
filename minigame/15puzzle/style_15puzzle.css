@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    background-color: rgb(218, 236, 255)!important;
+}
+
+.number {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: rgb(54, 167, 54);
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    /* padding: 10px; */
+    transition: 0.2s;
+}
+
+.empty {
+    background-color: rgba(0,0,0,0);
+}
+
+@media (max-width: 450px){
+    .number {
+        width: 24%;
+        margin: 0;
+    }
+}

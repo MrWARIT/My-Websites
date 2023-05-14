@@ -1,5 +1,13 @@
 /* class */
 
+.active-topic {
+    display: block!important;
+}
+
+.active-lesson {
+    color: #fff!important;
+}
+
 .button-container {
     position: absolute; 
     bottom: 0; 
@@ -32,7 +40,16 @@
 }
 
 .my-navbar-icon {
-    color: #ffffff; margin: 10px;
+    color: #ffffff; 
+    margin: 10px;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.topic {
+    display: none;
 }
 
 .ul-sidebar {

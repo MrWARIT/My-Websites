@@ -86,3 +86,27 @@ a {
 .webpage-image{
     margin-right: 30px;
 }
+
+#profile-side {
+    position: fixed;
+    background-color: #111;
+    height: 100%;
+    width: 320px;
+}
+
+#profile-right {
+    padding: 25px;
+}
+
+#resume-image {
+    border-radius: 100%;
+    width: calc(100% - 50px);
+    text-align: center;
+    margin: 25px;
+}
+
+#myname {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}

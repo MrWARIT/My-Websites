@@ -1,9 +1,11 @@
 // สร้างตัวแปรสถานะ live (run code ตลอดเวลา) เป็น false
 var live = false;
-selectCode('html-input');
+selectCodeSpace('html-input');
+selectTopic('javascript');
 
 // กดเลือกหัวข้อจากเมนูฝั่งซ้าย
 for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
+    document.querySelectorAll(".p-sidebar")[i].addEventListener("click", showAndHide);
     document.querySelectorAll(".p-sidebar")[i].addEventListener("click", function(){
         // เอา active effect อันเดิมออก (กรณีโหลด page ครั้งแรกจะไม่มี)
         try {
@@ -13,7 +15,14 @@ for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
         if(!this.classList.contains("clear-code-space")) this.classList.add("current-active");
 
         // เอา title มาระบุชื่อตัวแปร array/object ที่จะแยกเป็น HTML, CSS และ Javascript
-        let selectedCode = "THAI_Javascript_" + this.title;
+        let selectedCode;
+        if(this.classList.contains("clear-code-space")) {
+            selectedCode = "Clear";
+        }
+        else {
+            let selectedLesson = document.querySelector(".active-lesson").title;
+            selectedCode = "THAI_" + selectedLesson + "_" + this.title;
+        }
 
         document.getElementById("html-code").value = eval(selectedCode + '["html"]');
         update(eval(selectedCode + '["html"]'), 'html');
@@ -25,8 +34,13 @@ for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
     });
 }
 
-for(i = 0; i < document.querySelectorAll(".p-sidebar").length; i++){
-    document.querySelectorAll(".p-sidebar")[i].addEventListener("click", showAndHide);
+for(i = 0; i < document.querySelectorAll(".nav-link").length; i++){
+    document.querySelectorAll(".nav-link")[i].addEventListener("click", showSidebar);
+    document.querySelectorAll(".nav-link")[i].addEventListener("click", function(){
+        document.querySelector(".active-lesson").classList.remove("active-lesson")
+        this.classList.add("active-lesson");
+        selectTopic(this.title);
+    });
 }
 
 // function selectCode(selectedCode){
@@ -70,27 +84,11 @@ function liveCompile(element){
     element.classList.toggle("active");
 }
 
-function outputZone(inputStatement){
-    console.clear();
-    inputStatement = inputStatement.replace(/myconsole/g, "console.log");
-    eval(inputStatement);
-    inputStatement = inputStatement.replace(/console.log/g, "myconsole");
-    eval(inputStatement);
-}
-
-function myconsole(inputString){
-    // console.log(inputString);
-    let text = document.getElementById("output").innerHTML;
-    if(text != "") {text += "\n";}
-    text += inputString;
-    document.getElementById("output").innerHTML = text;
-}
-
 function showAndHide(){
     // if(document.querySelector(".ul-sidebar").classList.contains("sidebarHide")){
     //     // document.querySelector(".CodeAndOutput").addEventListener("click", showAndHide);
-    //     document.querySelector(".ul-sidebar").classList.remove("sidebarHide");
-    //     document.querySelector(".CodeAndOutput").classList.add("fullwidth");
+        // document.querySelector(".ul-sidebar").classList.remove("sidebarHide");
+        // document.querySelector(".CodeAndOutput").classList.add("fullwidth");
     // }
     // else {
         // try {
@@ -103,11 +101,12 @@ function showAndHide(){
     document.querySelector(".CodeAndOutput").classList.toggle("fullwidth");
 }
 
-// function hideSidebar() {
-//     document.querySelector(".ul-sidebar").classList.add("sidebarHide");
-// }
+function showSidebar(){
+    document.querySelector(".ul-sidebar").classList.remove("sidebarHide");
+    document.querySelector(".CodeAndOutput").classList.add("fullwidth");
+}
 
-function selectCode(codeType) {
+function selectCodeSpace(codeType) {
     document.getElementById("html-input-btn").classList.remove("active");
     document.getElementById("css-input-btn").classList.remove("active");
     document.getElementById("javascript-input-btn").classList.remove("active");
@@ -116,6 +115,13 @@ function selectCode(codeType) {
     document.getElementById("javascript-input").classList.add("code-hide");
     document.getElementById(codeType + "-btn").classList.add("active");
     document.getElementById(codeType).classList.remove("code-hide");
+}
+
+function selectTopic(topic) {
+    try {
+        document.querySelector(".active-topic").classList.remove("active-topic");
+    } catch (error) {}
+    document.querySelector(".topic_" + topic).classList.add("active-topic");
 }
 
 function update(text, language){
@@ -151,99 +157,9 @@ function check_tab(element, language, event) {
       element.selectionEnd = cursor_pos;
       update(element.value, language); // Update text to include indent
     }
-  }
-
-
-
-
-// data zone
-
-let THAI_Javascript_Clear = 
-{"html": ``, 
-"css": ``, 
-"javascript": ``};
-
-let THAI_Javascript_HTMLDOM_writeANDwriteln = 
-{"html": `<p>document.write() และ document.writeln() ต่างกันที่ 
-writeln() จะเติม '\\n' ต่อท้ายข้อความเรา แต่ใน HTML นั้น
-whitespace ต่างๆจะถูกย่อให้เหลือเพียง single space (เหมือนกับที่
-ข้อความนี้ถูกขึ้นบรรทัดใหม่ แต่ใน HTML จะเห็นเป็นบรรทัดเดิมที่เว้นช่อง
-ว่างไว้หนึ่งช่อง)</p>
-<pre>วิธีหนึ่งที่จะทำให้เห็นความแตกต่างคือการใช้ &lt;pre&gt; tag
-ซึ่งจะไม่ยุบ whitespace ต่างๆเป็น single space</pre>
-<p>ด้านล่างนี้คือตัวอย่างการใช้ write(), writeln()</p>`, 
-"css": ``, 
-"javascript": `document.write("write()1---");
-document.write("---write()2");
-
-document.write("<br><br>");
-
-document.writeln("writeLine()1---");
-document.writeln("---writeLine()2");
-
-document.writeln("<br><br>");
-
-document.writeln("---     ---  \\n  ---  \\t  ---");
-
-document.write("<br><br>");
-
-document.write("<pre>");
-document.write("write()1");
-document.write("write()2");
-document.write("<br>");
-document.writeln("writeln()1");
-document.writeln("writeln()2");
-document.write("</pre>");`};
-
-let THAI_Javascript_HTMLDOM_getElementANDquerySelector =
-{"html": `<code>
-<h3>This is 1st &lt;h3&gt; tag</h3>
-<h3>This is 2nd &lt;h3&gt; tag</h3>
-<h3>This is 3rd &lt;h3&gt; tag</h3>
-<p id="result1">This is &lt;p&gt; tag with id ="result1"</p>
-<p class="result2">This is &lt;p&gt; tag with class = "result2"</p>
-<p class="result2">This is &lt;p&gt; tag with class = "result2"</p>
-</code>
-
-<button onclick="changeTextById()">
-	Change text by <strong>getElementById()</strong>
-</button>
-<br><br>
-<button onclick="changeTextByClassName()">
-	Change text by <strong>getElementsByClassName()</strong>
-</button>
-<br><br>
-<button onclick="changeTextByQuerySelector()">
-	Change text by <strong>getElementByQuerySelector()</strong>
-</button>
-</button>
-<br><br>
-<button onclick="changeTextByQuerySelectorAll()">
-	Change text by <strong>getElementByQuerySelectorAll()</strong>
-</button>`, 
-"css": ``, 
-"javascript": `function changeTextById(){
-	document.getElementById("result1").innerHTML =
-		"Changed by <strong>getElementById()</strong>";
+    else if (event.key === "Enter") {
+        // event.preventDefault();
+        // element.value += "\n\t";
+        update(element.value, language);
+    }
 }
-
-function changeTextByClassName(){
-	document.getElementsByClassName("result2")[0].innerHTML =
-		"Changed by <strong>getElementByClassName()</strong>";
-}
-
-function changeTextByQuerySelector(){
-	document.querySelector("h3").innerHTML = 
-		"h3 changed by <strong>querySelector()</strong>";
-	document.querySelector("#result1").innerHTML =
-		"result1 changed by <strong>querySelector()</strong>";
-	document.querySelector(".result2").innerHTML = 
-		"result2 changed by <strong>querySelector()</strong>";
-}
-
-function changeTextByQuerySelectorAll(){
-	for(i = 0; i < document.querySelectorAll("h3").length; i++){
-		document.querySelectorAll("h3")[i].innerHTML =
-			"h3 changed by <strong>querySelectorAll()</strong>";
-	}
-}`};

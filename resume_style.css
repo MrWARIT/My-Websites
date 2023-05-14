@@ -1,22 +1,22 @@
 body {
     margin: 0;
     font-family: 'Alkatra', cursive;
-    background-color:#abc;
+    background-color: #1D1E27; 
+    color: rgb(232, 228, 255);
 }
 
 
 a {
-    color: white;
+    color: rgb(168, 168, 255);
+    text-decoration: none;
 }
 
-div {
-    position: absolute;
-    bottom: 5%;
-    text-align: center;
+a:hover {
+    color: rgb(140, 140, 255);
 }
 
 .skills {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .skill-image-zone {
@@ -37,8 +37,7 @@ div {
 }
 
 .topic {
-    margin-top: 30px;
-    margin-bottom: 50px;
+    padding: 30px 50px 30px 370px;
 }
 
 .topic-head {
@@ -53,19 +52,17 @@ div {
 .timeline-section {
     /* background-color: #224; */
     padding-top: 30px;
-    color: black;
     border-top: 4px solid white;
-    position: relative;
 }
 
 .timeline {
-    background-color: white;
+    background-color: rgb(80, 82, 180);
     display: inline-block;
     width: 40%;
-    /* height: 120px; */
+    height: 120px;
     margin-left: 3%;
     padding: 14px;
-    position: absolute;
+    position: relative;
 }
 
 .timeline::before {
@@ -85,7 +82,7 @@ div {
     width: 0;
     height: 0;
     border-style: solid;
-    border-color: transparent transparent white transparent;
+    border-color: transparent transparent rgb(80, 82, 180) transparent;
     border-width: 18px 10px;
     top: -36px;
     left: 20px;
@@ -97,7 +94,7 @@ div {
 }
 
 .timeline-detail {
-    /* position: absolute; */
+    position: absolute;
 }
 
 #profile-left {
@@ -109,9 +106,7 @@ div {
 }
 
 #profile-right {
-    margin: 0 25px 0 345px;
-    /* background-color: rgb(256,256,256,0.4); */
-    padding: 10px 25px;
+    padding: 10px 0;
     text-align: left;
 }
 
@@ -128,4 +123,26 @@ div {
     color: white;
     font-weight: bold;
     margin: 0;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+  background: black; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #424242; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(62, 62, 223); 
 }
