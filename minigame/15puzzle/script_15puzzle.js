@@ -98,7 +98,7 @@ $(document).ready(function(){
             }
         }
         $("#moveCount").html(moveTime + " move");
-        if(correct == 3){
+        if(correct >= 15){
             gameStarted = false;
             clearInterval(myTimeCount);
             setTimeout(showGameWin, 300);
