@@ -40,6 +40,15 @@ a:hover {
     padding: 30px 50px 30px 370px;
 }
 
+@media (max-width: 780px){
+    .topic{
+        padding: 30px 50px;
+    }
+    #profile-left{
+        display: none;
+    }
+}
+
 .topic-head {
     margin: 0;
     margin-bottom: 20px;
@@ -63,6 +72,7 @@ a:hover {
     margin-left: 3%;
     padding: 14px;
     position: relative;
+    border-radius: 10px;
 }
 
 .timeline::before {

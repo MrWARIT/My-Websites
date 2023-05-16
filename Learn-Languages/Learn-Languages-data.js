@@ -236,6 +236,55 @@ function checkStart(animal){
 
 
 
+let THAI_javascript_HTMLDOM_transition = 
+{"html": `<div id="test_div"></div>
+<br>
+<button onclick="zoomIn()">Zoom In</button>
+<button onclick="zoomOut()">Zoom Out</button>`, 
+"css": `div {
+	background-color: blue;
+	width: 100px;
+	height: 100px;
+	color: white;
+	font-size: 30px;
+	text-align: center;
+	padding: 20px;
+	transition: 1s;
+}`, 
+"javascript": `function zoomIn(){
+	document.querySelector("#test_div").style = "width: 300px";
+}
+function zoomOut(){
+	document.querySelector("#test_div").style = "width: 100px";
+}`};
+
+
+
+let THAI_javascript_Date_get = 
+{"html": ``, 
+"css": ``, 
+"javascript": `var day = new Date();
+document.write(day);
+document.write("<hr>");
+document.write(day.getDay());
+document.write("<hr>");
+document.write(day.getDate());
+document.write("<hr>");
+document.write(day.getMonth());
+document.write("<hr>");
+document.write(day.getFullYear());
+document.write("<hr>");
+document.write(day.getHours());
+document.write("<hr>");
+document.write(day.getMinutes());
+document.write("<hr>");
+document.write(day.getSeconds());
+document.write("<hr>");
+document.write(day.getHours() + ":" + day.getMinutes() + ":" + day.getSeconds());
+document.write("<hr>");`};
+
+
+
 let THAI_javascript_ToDoList = 
 {"html": `<h1>All</h1>
 <h3>
