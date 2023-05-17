@@ -49,13 +49,29 @@ $(document).ready(function(){
 
     // reload the number
     function reload(){
-        var remaining = all_number.length;
-        while(remaining){
-            let random_number = Math.floor(Math.random() * remaining--);
-            let last = all_number[remaining];
-            let temp = last;
-            all_number[remaining] = all_number[random_number];
-            all_number[random_number] = temp;
+        var remaining;
+        var total_inversion = 1;
+        while(total_inversion % 2 != 0) {
+            total_inversion = 0;
+            remaining = all_number.length;
+
+            // random number by Fisher Yates Shuffle
+            while(remaining){
+                let random_number = Math.floor(Math.random() * remaining--);
+                let last = all_number[remaining];
+                let temp = last;
+                all_number[remaining] = all_number[random_number];
+                all_number[random_number] = temp;
+            }
+            // count total inversion to check if this puzzle can be solved or not
+            for(i = 0; i < all_number.length; i++){
+                for(j = i+1; j < all_number.length; j++){
+                    if(all_number[j] < all_number[i]){
+                        total_inversion++;
+                    }
+                }
+            }
+            console.log(total_inversion);
         }
 
         switchPosition(".position_44", ".empty", "position_44", getPosition(".empty"));
@@ -71,29 +87,33 @@ $(document).ready(function(){
 
         for(i = 1; i <= 4; i++){
             for(j = 1; j <= 4; j++){
+                var current_div = $(".position_" + i + j);
+
                 // give each div a random number if it's a first load or restart
                 if(isFirstload == "Firstload" && (i != 4 || j != 4)){
-                    $(".position_" + i + j).html(all_number[(i-1) * 4 + j - 1]);
+                    current_div.html(all_number[(i-1) * 4 + j - 1]);
                 }
 
-                if($(".position_" + i + j).html() == ((i-1)*4 + j)){
+                // count the correct position and check is the player win yet
+                if(current_div.html() == ((i-1)*4 + j)){
                     correct++;
-                    $(".position_" + i + j).css("background-color", "rgb(101, 246, 101)");
+                    current_div.css("background-color", "rgb(101, 246, 101)");
                 }
-                else if(!$(".position_" + i + j).hasClass("empty")) {
-                    $(".position_" + i + j).css("background-color", "white");
+                else if(!current_div.hasClass("empty")) {
+                    current_div.css("background-color", "white");
                 }
 
+                // reposition all div, depends on window width
                 if($(window).width() > 450){
-                    $(".position_" + i + j).css("left", "calc(50% - 330px + (" + j + " * 110px))");
+                    current_div.css("left", "calc(50% - 330px + (" + j + " * 110px))");
                     $(".number").css("height", "100px");
-                    $(".position_" + i + j).css("top", "calc(50% - 330px + (" + i + " * 110px))");
+                    current_div.css("top", "calc(50% - 330px + (" + i + " * 110px))");
                 }
                 else{
-                    $(".position_" + i + j).css("left", "calc(4.5% + (23% * (" + j + " - 1)))");
+                    current_div.css("left", "calc(4.5% + (23% * (" + j + " - 1)))");
                     $(".number").css("height", $(".number").css("width"));
                     var now_height = $(".number").css("width");
-                    $(".position_" + i + j).css("top", "calc(50% - (3 * (" + now_height + " + 5px)) + (" + i + " * (" + (now_height) + " + 5px)))");
+                    current_div.css("top", "calc(50% - (3 * (" + now_height + " + 5px)) + (" + i + " * (" + (now_height) + " + 5px)))");
                 }
             }
         }
