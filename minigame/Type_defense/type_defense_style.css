@@ -136,8 +136,8 @@ body {
 
 .score {
     position: absolute;
-    bottom: -2%;
+    bottom: 1%;
     left: 0;
-    margin: 20px;
+    margin: 0 20px;
     color: white;
 }
