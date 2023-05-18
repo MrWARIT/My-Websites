@@ -115,6 +115,32 @@ var my_interval_function = setInterval(function(){
     }
 }, 500);
 
+const message = new SpeechSynthesisUtterance();
+console.log(message.voice);
+
+function onVoiceChanged(){
+    console.log(message.voice);
+    console.log("test");
+    const voices = speechSynthesis.getVoices();
+    voices.find(voice => voice.lang === 'en-US')
+    const myVoice = voices.find(voice => voice.name === 'Microsoft Guy Online (Natural) - English (United States)');
+    console.log(voices);
+    message.voice = myVoice;
+    // message.voice = speechSynthesis.getVoices()[2];
+    console.log(message);
+    console.log(message.voice);
+}
+
+function run(){
+    speechSynthesis.addEventListener("voiceschanged", onVoiceChanged);
+
+    console.log(message.voice);
+    message.text = "This is the testing voice";
+    speechSynthesis.speak(message);
+}
+
+run();
+
 var vocabulary_list = [
     ["Dog", "หมา"],
     ["Cat", "แมว"],
