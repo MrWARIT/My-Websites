@@ -6,8 +6,8 @@ body {
 
 #player_input, #output {
     position: absolute;
-    bottom: 10%;
-    left: calc(50% - 100px);
+    bottom: 15%;
+    left: calc(50% - 110px);
     font-family: monospace;
     font-size: 12pt;
     z-index: 2;
@@ -88,8 +88,11 @@ body {
     position: absolute;
     z-index: 1;
     text-align: right;
+    /* display: inline; */
     padding-right: 20px;
     right: 0;
+    bottom: 3%;
+    width: 100%;
 }
 
 #gameover_window {
@@ -116,9 +119,25 @@ body {
     bottom: 0;
     margin: auto;
     width: 300px;
-    height: 150px;
+    height: 200px;
     z-index: 4;
     background-color: white;
     border-radius: 20px;
     text-align: center;
+}
+
+#problem_list {
+    font-family: cursive;
+}
+
+.full_heart {
+    /* display: inline-block; */
+}
+
+.score {
+    position: absolute;
+    bottom: -2%;
+    left: 0;
+    margin: 20px;
+    color: white;
 }

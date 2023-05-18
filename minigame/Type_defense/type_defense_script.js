@@ -1,4 +1,5 @@
 var fix_bug_time = 0;
+var score = 0;
 
 function updateText(){
     var text = $("#player_input").val();
@@ -47,6 +48,8 @@ function checkAnswer(userInput) {
             var pushback_word = [word_list[i].innerText, mean_list[i].innerText];
             vocabulary_list.push(pushback_word);
             problem_list[i].remove();
+            $("#score").html("Score: " + ++score);
+            $("#final_score").html("Score: " + ++score);
             // console.log(vocabulary_list);
         }
     }
@@ -77,7 +80,7 @@ var my_interval_function = setInterval(function(){
         for(i = 0; i < problem_list.length; i++){
             // problem_list[i].style.top = "calc(" + problem_list[i].style.top + " + 5%)";
             // console.log(problem_list[i].style.top.toString().split(" ")[2].split("%")[0]);
-            var new_top = problem_list[i].style.top.toString().split(" ")[2].split("%")[0] - (-5);
+            var new_top = problem_list[i].style.top.toString().split(" ")[2].split("%")[0] - (-4);
             problem_list[i].style.top = "calc(-90px + " + new_top + "%)";
             // console.log(problem_list[i].style);
             if(new_top > 60){
