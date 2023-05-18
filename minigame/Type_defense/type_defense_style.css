@@ -1,0 +1,124 @@
+body {
+    background-color: rgb(180, 245, 189);
+    font-family: cursive;
+    margin: 0;
+}
+
+#player_input, #output {
+    position: absolute;
+    bottom: 10%;
+    left: calc(50% - 100px);
+    font-family: monospace;
+    font-size: 12pt;
+    z-index: 2;
+    line-height: 1.5;
+    text-align: center;
+
+    background-color: transparent;
+    color: transparent;
+    width: 200px;
+    height: 30px;
+    padding: 10px;
+    margin: 0;
+    border-radius: 10px;
+
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#player_input {
+    border: none;
+    outline: none;
+    resize: none;
+    caret-color: black;
+}
+
+#output {
+    z-index: 1;
+    background-color: white;
+    color: black;
+}
+
+.each_mean {
+    color: rgb(60, 60, 60);
+}
+
+.each_word {
+    margin-top: auto;
+    /* filter: blur(3px); */
+}
+
+.each_problem {
+    margin-top: auto;
+    list-style-type: none;
+    background-color: white;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 7px;
+    position: absolute;
+    top: 50px;
+    transition: 0.8s;
+    border: solid 3px black;
+    z-index: -1;
+}
+
+.each_image {
+    width: 100px;
+}
+
+.wall, .floor {
+    position: absolute;
+    bottom: 25%;
+    z-index: 0;
+
+    width: 100%;
+    height: 15px;
+    background-color: rgb(33, 33, 33);
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+}
+
+.floor {
+    bottom: 0;
+    height: 25%;
+    background-color: rgb(65, 65, 65);
+}
+
+.heart {
+    position: absolute;
+    z-index: 1;
+    text-align: right;
+    padding-right: 20px;
+    right: 0;
+}
+
+#gameover_window {
+    display: none;
+}
+
+.blur_div {
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(250,250,250,0.1);
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+    margin: 0;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
+
+#gameover_content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 300px;
+    height: 150px;
+    z-index: 4;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}

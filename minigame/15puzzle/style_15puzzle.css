@@ -37,12 +37,13 @@ body {
 .empty {
     background-color: rgba(0,0,0,0);
     border: none;
+    cursor: initial;
 }
 
 #timer {
     text-align: center; 
     position: absolute; 
-    top: 7%; 
+    top: 8%; 
     font-size: 40px;
     right: calc(50% - 200px);
 }
@@ -50,7 +51,7 @@ body {
 #moveCount {
     text-align: center; 
     position: absolute; 
-    top: 7%; 
+    top: 8%; 
     font-size: 40px;
     left: calc(50% - 200px);
 }

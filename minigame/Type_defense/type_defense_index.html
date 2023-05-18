@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Type Defense</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="type_defense_style.css" rel="stylesheet">
+        <link rel="icon" href="word_images/tower.png">
+    </head>
+    <body>
+        <textarea oninput="updateText()" onkeydown="check_enter(this, event)" id="player_input" spellcheck="false"></textarea>
+        <pre id="output"></pre>
+
+        <div class="wall"></div>
+        <div class="floor"></div>
+
+        <div id="gameover_window">
+            <div class="blur_div"></div>
+            <div id="gameover_content">
+                <h1>Game Over</h1>
+                <!-- <button>OK</button> -->
+                <p>โหลดหน้าใหม่</p>
+            </div>
+        </div>
+
+        <div class="heart">
+            <img class="full_heart" src="word_images/heart.png" style="width: 40px; margin: 5px;">
+            <img class="full_heart" src="word_images/heart.png" style="width: 40px; margin: 5px;">
+            <img class="full_heart" src="word_images/heart.png" style="width: 40px; margin: 5px;">
+        </div>
+
+        <ul id="problem_list">
+        </ul>
+
+        <!-- credit -->
+        <!--TOWER <a href="https://www.flaticon.com/free-icons/tower" title="tower icons">Tower icons created by Freepik - Flaticon</a> -->
+        <!--DOG <a href="https://www.flaticon.com/free-icons/dog" title="dog icons">Dog icons created by Freepik - Flaticon</a> -->
+        <!--CAT <a href="https://www.flaticon.com/free-icons/cat" title="cat icons">Cat icons created by Freepik - Flaticon</a> -->
+        <!--WATER <a href="https://www.flaticon.com/free-icons/water" title="water icons">Water icons created by Freepik - Flaticon</a> -->
+        <!--BOWL <a href="https://www.flaticon.com/free-icons/plate" title="plate icons">Plate icons created by popo2021 - Flaticon</a> -->
+        <!--LION <a href="https://www.flaticon.com/free-icons/lion" title="lion icons">Lion icons created by Culmbio - Flaticon</a> -->
+        <!--SONG <a href="https://www.flaticon.com/free-icons/song" title="song icons">Song icons created by Freepik - Flaticon</a> -->
+        <!--COMEDY <a href="https://www.flaticon.com/free-icons/comedy" title="comedy icons">Comedy icons created by Freepik - Flaticon</a> -->
+        <!--HUNGRY <a href="https://www.flaticon.com/free-icons/hungry" title="hungry icons">Hungry icons created by Freepik - Flaticon</a> -->
+        <!--SOAP <a href="https://www.flaticon.com/free-icons/soap" title="soap icons">Soap icons created by Freepik - Flaticon</a> -->
+        <!--RULER <a href="https://www.flaticon.com/free-icons/ruler" title="ruler icons">Ruler icons created by Freepik - Flaticon</a> -->
+        <!--PEN <a href="https://www.flaticon.com/free-icons/pen" title="pen icons">Pen icons created by Freepik - Flaticon</a> -->
+        <!--PENCIL <a href="https://www.flaticon.com/free-icons/pencil" title="pencil icons">Pencil icons created by Freepik - Flaticon</a> -->
+        <!--HEART <a href="https://www.flaticon.com/free-icons/heart" title="heart icons">Heart icons created by Pixel perfect - Flaticon</a> -->
+        <!--EMPTYHEART <a href="https://www.flaticon.com/free-icons/heart" title="heart icons">Heart icons created by Pixel perfect - Flaticon</a> -->
+
+
+
+        <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+        <script src="type_defense_script.js"></script>
+    </body>
+</html>

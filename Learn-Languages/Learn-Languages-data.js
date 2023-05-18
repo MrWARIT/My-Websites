@@ -236,6 +236,36 @@ function checkStart(animal){
 
 
 
+let THAI_javascript_Array_slice = 
+{"html": ``, 
+"css": ``, 
+"javascript": `var testText = "ABCDEFG";
+document.write(testText.slice(0, 2));
+document.write("<br>");
+document.write(testText.slice(2));`};
+
+
+
+let THAI_javascript_Array_splice = 
+{"html": ``, 
+"css": ``, 
+"javascript": `const animals = ["Cat", "Dog", "Otter", "Lion", "Seal"];
+document.write(animals);
+document.write("<br>");
+var random_index;
+do {
+	random_index = Math.floor(Math.random() * animals.length);
+	document.write(random_index);
+	document.write("<br>");
+	document.write(animals.splice(random_index, 1));
+	document.write("<br>");
+	document.write("<br>");
+	document.write(animals);
+	document.write("<br>");
+} while(animals.length)`};
+
+
+
 let THAI_javascript_HTMLDOM_transition = 
 {"html": `<div id="test_div"></div>
 <br>
@@ -335,10 +365,8 @@ let THAI_jquery_thiskeyword =
 <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
 </head>
 <body>
-<p>Paragraph</p>
-<p>Paragraph</p>
-<p>Paragraph</p>
-<p>Paragraph</p>
+<p>Click to change color to red</p>
+<p>Double click to change color back to black</p>
 </body>`, 
 "css": `p {
 user-select: none;
@@ -409,3 +437,147 @@ let THAI_apply_timeline =
 }`, 
 "javascript": ``};
 
+
+
+let THAI_apply_popup = 
+{"html": `<div class="popup">
+	<div class="blur"></div>
+	<div class="popup_window">
+		<h1>This is a popup</h1>
+		<button id="hide_popup">OK</button>
+	</div>
+</div>
+<h3>You can click <button id="show_popup">THIS</button> 
+button to show the popup</h3>`, 
+"css": `body {
+	margin: 0;
+}
+h3 {
+	padding: 20px;
+	line-height: 2;
+}
+.popup {
+	display: none;
+}
+.blur {
+	background-color: rgba(100,200,256,0.3);
+	backdrop-filter: blur(5px);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 1;
+}
+.popup_window {
+	width: 300px;
+	height: 120px;
+	background-color: white;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	z-index: 2;
+	padding: 20px;
+	border-radius: 20px;
+	text-align: center;
+}`, 
+"javascript": `document.querySelector("#show_popup").addEventListener("click", function(){
+	document.querySelector(".popup").style.display = "block";
+});
+document.querySelector("#hide_popup").addEventListener("click", function(){
+	document.querySelector(".popup").style.display = "none";
+});`};
+
+
+
+let THAI_apply_timer = 
+{"html": `<button onclick="startLongTimer()"><h3>Timer (1 second)</h3></button>
+<h2 id="long_timer">0</h2>
+<button onclick="startShortTimer()"><h3>Timer (0.1 second)</h3></button>
+<h2 id="short_timer">0</h2>
+<h3>(For lower than 1 second interval function, after a short time of
+inactivate, the speed will slow down to one second)</h3>
+<button onclick="stopTimer()"><h3>Stop Timer</h3></button>`, 
+"css": `body {
+	text-align: center;
+	padding: 20px;
+}`, 
+"javascript": `var myLongTime;
+var myShortTime;
+var longTimeCounting = false;
+var shortTimeCounting = false;
+
+function startLongTimer(){
+	if(!longTimeCounting) {
+		myLongTime = 0;
+		myLongTimer = setInterval(longTimer, 1000);
+	}
+	longTimeCounting = true;
+}
+
+function longTimer() {
+	document.querySelector("#long_timer").innerHTML = ++myLongTime;
+}
+
+function startShortTimer(){
+	if(!shortTimeCounting) {
+		myShortTime = 0;
+		myShortTimer = setInterval(shortTimer, 100);
+	}
+	shortTimeCounting = true;
+}
+
+function shortTimer() {
+	myShortTime += 0.1;
+	document.querySelector("#short_timer").innerHTML = myShortTime.toFixed(2);
+}
+
+function stopTimer() {
+	myLongTime = 0;
+	document.querySelector("#long_timer").innerHTML = 0;
+	clearInterval(myLongTimer);
+	myShortTime = 0;
+	document.querySelector("#short_timer").innerHTML = 0;
+	clearInterval(myShortTimer);
+	longTimeCounting = false;
+	shortTimeCounting = false;
+}`};
+
+
+
+let THAI_apply_unfinished_codeplay =
+{"html": `<textarea id="input" oninput="updateOutput()" spellcheck="false"></textarea>
+<pre id="output"></pre>`, 
+"css": `#input, #output{
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: 0;
+	box-sizing: border-box;
+	padding: 10px;
+	font-family: monospace;
+	font-size: 12pt;
+	z-index: 2;
+	
+	caret-color: red;
+	background-color: transparent;
+	color: transparent;
+	width: 400px;
+	height: 300px;
+	resize: none;
+	outline: none;
+
+	/* horizontal scollable */
+	overflow: auto;
+	white-space: nowrap;
+}
+
+#output {
+	background-color: #abc;
+	color: black;
+	z-index: 1;
+}`, 
+"javascript": `function updateOutput(){
+	document.querySelector("#output").innerHTML = document.querySelector("#input").value;
+}`};

@@ -40,7 +40,7 @@ a:hover {
     padding: 30px 50px 30px 370px;
 }
 
-@media (max-width: 780px){
+@media (max-width: 880px){
     .topic{
         padding: 30px 50px;
     }

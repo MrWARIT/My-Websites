@@ -4,13 +4,16 @@ profile_favicon
 long background
 Placeholder Skill descriptions
 Normal Transcript
+15 puzzle
 
 
 ---------------TO DO---------------
+webpage editor
 Personal data
 Code Blog outline
-15 puzzle
 Quick type game
 exit button
 Minigame navbar same pattern
 Resume nightmode and lightmode
+hangman
+type defense

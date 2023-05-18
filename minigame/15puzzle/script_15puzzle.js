@@ -2,12 +2,14 @@ $(document).ready(function(){
 
     // Number array for shuffle and give values to divs
     var all_number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
     // my time
     var backTime = 1, frontTime = 0;
     var timeRunning = false;
     var myTimeCount;
     // move count
     var moveTime = 0;
+
     // game state
     var gameStarted = false;
     // refresh the page, refresh the position
@@ -36,6 +38,7 @@ $(document).ready(function(){
             gameStarted = true;
         }
     });
+
     function myTimer(){
         let back_number = (backTime < 10)? '0' + backTime : backTime;
         let front_number = (frontTime < 10)? '0' + frontTime : frontTime;
@@ -71,7 +74,6 @@ $(document).ready(function(){
                     }
                 }
             }
-            console.log(total_inversion);
         }
 
         switchPosition(".position_44", ".empty", "position_44", getPosition(".empty"));
@@ -117,13 +119,16 @@ $(document).ready(function(){
                 }
             }
         }
+
         $("#moveCount").html(moveTime + " move");
+
         if(correct >= 15){
             gameStarted = false;
             clearInterval(myTimeCount);
             setTimeout(showGameWin, 300);
             $(".start_button").addClass("disabled");
         }
+
     }
 
     // switch position

@@ -15,6 +15,33 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
     </head>
     <body>
+        
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" style="background-color: black!important; height: 7%; margin: 0;">
+        <div class="container-fluid" style="background-color: black;">
+            <a class="navbar-brand" href="#">15 PUZZLE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="../minigameindex.html">HOME</a></li>
+              <li class="nav-item"><a class="nav-link">HOW TO PLAY</a></li>
+              <!-- <li class="nav-item">
+                <div class="form-check form-switch" style="margin: 8px;">
+                    <span style="color: rgba(255, 255, 255, 0.55)">Night mode</span>
+                    <input class="form-check-input simon-switch-mode" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+                </div>
+              </li> -->
+            </ul>
+            <!-- <form class="d-flex" role="search" style="margin: 10px 0;">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">Search</button>
+            </form> -->
+          </div>
+        </div>
+    </nav>
+
         <div class="game_win">
             <div style="width: 100%; height: 100%; position: absolute; background-color: rgba(100, 256, 256, 0.1); z-index: 1; backdrop-filter: blur(5px);"></div>
             <div id="win_window" style="width: 100px; height: 300px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; background-color: white; z-index: 2; border: solid 5px black; border-radius: 20px; padding: 35px; text-align: center; transition: 0.2s;">
@@ -56,7 +83,9 @@
 
         <!-- font awesome -->
         <script src="https://kit.fontawesome.com/dacbd94719.js" crossorigin="anonymous"></script>
+
         <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+        
         <script src="script_15puzzle.js"></script>
     </body>
 </html>
