@@ -1,5 +1,6 @@
 var fix_bug_time = 0;
 var score = 0;
+var speed = 4;
 
 function updateText(){
     var text = $("#player_input").val();
@@ -43,18 +44,19 @@ function checkAnswer(userInput) {
     var word_list = document.querySelectorAll(".each_word");
     var problem_list = document.querySelectorAll(".each_problem");
     var mean_list = document.querySelectorAll(".each_mean");
+    var time_list = document.querySelectorAll(".each_time");
     for(i = 0; i < word_list.length; i++){
         if(userInput.toLowerCase() == word_list[i].innerText.toLowerCase()){
             message.text = word_list[i].innerText;
             speechSynthesis.speak(message);
             // message2.text = "test";
             // speechSynthesis.speak(message2);
-            var pushback_word = [word_list[i].innerText, mean_list[i].innerText];
+            var pushback_word = [word_list[i].innerText, mean_list[i].innerText, time_list[i].innerText - (-1)];
             vocabulary_list.push(pushback_word);
             problem_list[i].remove();
             $("#score").html("Score: " + ++score);
-            $("#final_score").html("Score: " + ++score);
-            // console.log(vocabulary_list);
+            $("#final_score").html("Score: " + score);
+            console.log(vocabulary_list);
         }
     }
     document.querySelector("#player_input").value = "";
@@ -70,6 +72,7 @@ function checkAnswer(userInput) {
 var my_interval_function = setInterval(function(){
     var word_list = document.querySelectorAll(".each_word");
     var mean_list = document.querySelectorAll(".each_mean");
+    var time_list = document.querySelectorAll(".each_time");
 
 
     var problem_list = document.querySelectorAll(".each_problem");
@@ -90,7 +93,7 @@ var my_interval_function = setInterval(function(){
             if(new_top > 60){
                 problem_list[i].style.backgroundColor = "rgb(255, 53, 53)";
                 if(new_top > 77){
-                    var pushback_word = [word_list[i].innerText, mean_list[i].innerText];
+                    var pushback_word = [word_list[i].innerText, mean_list[i].innerText, time_list[i].innerText];
                     vocabulary_list.push(pushback_word);
                     problem_list[i].remove()
                     console.log("BAMM");
@@ -114,7 +117,18 @@ var my_interval_function = setInterval(function(){
         var random_left = Math.floor(Math.random() * 80) + "%";
         // console.log(random_left);
         if (problem_list.length < 10){
-            document.querySelector("#problem_list").innerHTML += '<li class="each_problem" style="top: calc(-90px + 0%); left: ' + random_left + '"><span class="each_word">' + new_word[0][0] + '</span> <span class="each_mean">' + new_word[0][1] + '</span> <img style="width: 50px;" src="word_images/' + new_word[0][0].toLowerCase() + '.png"></li>';
+            if (new_word[0][2] <= 2){
+                document.querySelector("#problem_list").innerHTML += '<li class="each_problem" style="top: calc(-120px + 0%); left: ' + random_left + '"><span class="each_word">' + new_word[0][0] + '</span> <br><span class="each_mean">' + new_word[0][1] + '</span> <span class="each_time">' + new_word[0][2] + '</span> <br><img style="width: 50px;" src="word_images/' + new_word[0][0].toLowerCase() + '.png"></li>';
+            }
+            else if (new_word[0][2] <= 3){
+                document.querySelector("#problem_list").innerHTML += '<li class="each_problem" style="top: calc(-120px + 0%); left: ' + random_left + '"><span class="each_word blur_text">' + new_word[0][0] + '</span> <br><span class="each_mean">' + new_word[0][1] + '</span> <span class="each_time">' + new_word[0][2] + '</span> <br><img style="width: 50px;" src="word_images/' + new_word[0][0].toLowerCase() + '.png"></li>';
+            }
+            else if (new_word[0][2] <= 4){
+                document.querySelector("#problem_list").innerHTML += '<li class="each_problem" style="top: calc(-120px + 0%); left: ' + random_left + '"><span class="each_word blur_text">' + new_word[0][0] + '</span> <br><span class="each_mean" style="display: none;">' + new_word[0][1] + '</span> <span class="each_time">' + new_word[0][2] + '</span> <img style="width: 50px;" src="word_images/' + new_word[0][0].toLowerCase() + '.png"></li>';
+            }
+            else {
+                document.querySelector("#problem_list").innerHTML += '<li class="each_problem" style="top: calc(-120px + 0%); left: ' + random_left + '"><span class="each_word blur_text" style="display: none;">' + new_word[0][0] + '</span> <span class="each_mean blur_text" style="display:none;">' + new_word[0][1] + '</span> <span class="each_time">' + new_word[0][2] + '</span> <img style="width: 50px;" src="word_images/' + new_word[0][0].toLowerCase() + '.png"></li>';
+            }
         }
     }
 }, 500);
@@ -128,32 +142,30 @@ function onVoiceChanged(){
     voices.find(voice => voice.lang === 'en-US')
     const myVoice = voices.find(voice => voice.name === 'Microsoft Guy Online (Natural) - English (United States)');
     message.voice = myVoice;
+    message.rate = 1.5;
     message2.voice = myVoice;
 }
 
 var vocabulary_list = [
-    ["Dog", "หมา"],
-    ["Cat", "แมว"],
-    ["Bowl", "ชาม"],
-    ["Lion", "สิงโต"],
-    ["Music", "เพลง"],
-    ["Water", "น้ำ"],
-    ["Tower", "ตึก"],
-    ["Comedy", "ตลก"],
-    ["Hungry", "หิว"],
-    ["Soap", "สบู่"],
-    ["Ruler", "ไม้บรรทัด"],
-    ["Pen", "ปากกา"],
-    ["Pencil", "ดินสอ"],
-    // ["Wing", "ปีก"],
-    // ["Ring", "แหวน"],
-    // ["Tree", "ต้นไม้"],
-    // ["Swim", "ว่ายน้ำ"],
-    // ["Belt", "เข็มขัด"],
-    // ["Camel", "อูฐ"],
-    // ["Dance", "เต้น"],
-    // ["Sound", "เสียง"],
-    // ["Zebra", "ม้าลาย"],
-    // ["Dragon", "มังกร"],
-    // ["Listen", "ฟัง"],
+    ["Dog", "หมา", 1],
+    ["Cat", "แมว", 1],
+    ["Pen", "ปากกา", 1],
+    ["Bowl", "ชาม", 1],
+    ["Soap", "สบู่", 1],
+    ["Lion", "สิงโต", 1],
+    ["Vase", "แจกัน", 1],
+    ["Music", "เพลง", 1],
+    ["Water", "น้ำ", 1],
+    ["Tower", "ตึก", 1],
+    ["Stairs", "บันได", 1],
+    ["Comedy", "ตลก", 1],
+    ["Hungry", "หิว", 1],
+    ["Ruler", "ไม้บรรทัด", 1],
+    ["Pencil", "ดินสอ", 1],
+    ["Bottle", "ขวด", 1],
+    ["Curtain", "ผ้าม่าน", 1],
+    ["Carpet", "พรม", 1],
+    ["Wrist", "ข้อมือ", 1],
+    ["Closet", "ตู้เสื้อผ้า", 1],
+    ["Broom", "ไม้กวาด", 1],
 ]

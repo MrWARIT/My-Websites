@@ -62,6 +62,10 @@ body {
     z-index: -1;
 }
 
+.each_time {
+    display: none;
+}
+
 .each_image {
     width: 100px;
 }
@@ -127,7 +131,9 @@ body {
 }
 
 #problem_list {
-    font-family: cursive;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 5px;
 }
 
 .full_heart {
@@ -140,4 +146,8 @@ body {
     left: 0;
     margin: 0 20px;
     color: white;
+}
+
+.blur_text {
+    filter: blur(4px);
 }
