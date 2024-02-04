@@ -56,7 +56,7 @@ function checkAnswer(userInput) {
             problem_list[i].remove();
             $("#score").html("Score: " + ++score);
             $("#final_score").html("Score: " + score);
-            console.log(vocabulary_list);
+            // console.log(vocabulary_list);
         }
     }
     document.querySelector("#player_input").value = "";
@@ -82,21 +82,21 @@ var my_interval_function = setInterval(function(){
     // console.log($(".each_problem").css("top"));
     // $(".each_problem").css("top", "calc(" + $(".each_problem").css("top") + " + 1%)")
     if(fix_bug_time % 3 == 0){
-        // console.log("move");
-        // var problem_list = document.querySelectorAll(".each_problem");
+        var problem_list = document.querySelectorAll(".each_problem");
         for(i = 0; i < problem_list.length; i++){
-            // problem_list[i].style.top = "calc(" + problem_list[i].style.top + " + 5%)";
-            // console.log(problem_list[i].style.top.toString().split(" ")[2].split("%")[0]);
-            var new_top = problem_list[i].style.top.toString().split(" ")[2].split("%")[0] - (-4);
+            // Move the word by calculate % of the top (new_top)
+            problem_list[i].style.top = "calc(" + problem_list[i].style.top + " + 5%)";
+            var new_top = problem_list[i].style.top.toString().split("%")[0].split("(")[1] - (-4);
             problem_list[i].style.top = "calc(-90px + " + new_top + "%)";
-            // console.log(problem_list[i].style);
+            // console.log(problem_list[i].style.top);
             if(new_top > 60){
+                // turn red if % of the top > 60
                 problem_list[i].style.backgroundColor = "rgb(255, 53, 53)";
                 if(new_top > 77){
+                    // take damage if % of the top > 77
                     var pushback_word = [word_list[i].innerText, mean_list[i].innerText, time_list[i].innerText];
                     vocabulary_list.push(pushback_word);
                     problem_list[i].remove()
-                    console.log("BAMM");
                     var all_heart = document.querySelectorAll(".full_heart");
                     if(all_heart.length > 0){
                         all_heart[0].setAttribute("src", "word_images/empty_heart.png");
@@ -111,11 +111,10 @@ var my_interval_function = setInterval(function(){
         }
     }
     else if ((fix_bug_time-2) % 6 == 0){
-        // console.log("create");
+        // Create new word
         var random_index = Math.floor(Math.random() * vocabulary_list.length);
         var new_word = vocabulary_list.splice(random_index, 1)
         var random_left = Math.floor(Math.random() * 80) + "%";
-        // console.log(random_left);
         if (problem_list.length < 10){
             if (new_word[0][2] <= 2){
                 document.querySelector("#problem_list").innerHTML += '<li class="each_problem" style="top: calc(-120px + 0%); left: ' + random_left + '"><span class="each_word">' + new_word[0][0] + '</span> <br><span class="each_mean">' + new_word[0][1] + '</span> <span class="each_time">' + new_word[0][2] + '</span> <br><img style="width: 50px;" src="word_images/' + new_word[0][0].toLowerCase() + '.png"></li>';
