@@ -1,0 +1,128 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* h1 {
+  font-family: 'Press Start 2P', cursive;
+} */
+
+#total {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-select {
+  width: 50%;
+}
+
+.weight-input {
+  width: 30%;
+}
+
+.btn-danger {
+  width: 10%;
+}
+
+button#add-row {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.nutrient-bar {
+  display: flex;
+  justify-content: space-around; /* จัดเรียงบาร์ในแนวนอน */
+  height: 300px; /* ความสูงทั้งหมดของบาร์ */
+  margin: 10px 0;
+  position: relative; /* ช่วยให้สามารถจัดตำแหน่งได้ง่าย */
+}
+
+.nutrient-container {
+  display: flex;
+  flex-direction: column; /* ให้บาร์อยู่ในแนวตั้ง */
+  align-items: center; /* จัดให้อยู่ตรงกลาง */
+  height: 100%;
+  width: 60px; /* ความกว้างของบาร์ */
+  position: relative; /* ช่วยให้จัดตำแหน่งบาร์ด้านใน */
+}
+
+.bar {
+  width: 100%; /* ให้บาร์กว้างเต็มที่ */
+  border-radius: 5px;
+  transition: height 0.5s ease; /* เพิ่มการเคลื่อนไหวในการปรับขนาด */
+  position: absolute; /* ทำให้สามารถควบคุมตำแหน่งได้ */
+  bottom: 0; /* เริ่มจากด้านล่าง */
+}
+
+#carbs-bar {
+  /* background-color: #4caf50; */
+  background-color: #000000;
+}
+
+#protein-bar {
+  /* background-color: #2196F3; */
+  background-color: #000000;
+}
+
+#fat-bar {
+  /* background-color: #FF9800; */
+  background-color: #000000;
+}
+
+#energy-bar {
+  /* background-color: #f44336; */
+  background-color: #000000;
+}
+
+.bar-container {
+  position: relative; /* ให้แน่ใจว่าตำแหน่งเส้นประถูกจัดอยู่ตามบาร์ */
+  height: 200px; /* ปรับความสูงตามต้องการ */
+  width: 50px; /* ความกว้างของบาร์ */
+}
+
+.dashed-line {
+  position: absolute;
+  width: 100%;
+  border-top: 1px dashed red; /* เปลี่ยนสีและประเภทเส้นตามต้องการ */
+}
+
+.nutrient-container {
+  position: relative;
+}
+
+.limit-line {
+  position: absolute;
+  width: 100%;
+  z-index: 1; /* ให้แน่ใจว่าเส้นประอยู่เหนือกราฟ */
+  color: red;
+}
+
+.label-total {
+  position: absolute;
+  bottom: -17%;
+}
+
+.label-nutrient {
+  position: absolute;
+  bottom: -10%;
+  font-weight: bold;
+}
+
+.label-container {
+  display: flex;
+  flex-direction: column; /* วางป้ายชื่อแบบตั้งตรง */
+  align-items: center; /* จัดกึ่งกลาง */
+  margin-top: 5px; /* ระยะห่างระหว่างบาร์และป้ายชื่อ */
+}
