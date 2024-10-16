@@ -1,18 +1,20 @@
 // Define the food options
 const options = [
-    { text: 'ข้าวขาว', protein: 2.7, carbs: 28, fat: 0.3, energy: 130 },
-    { text: 'ข้าวกล้อง', protein: 2.7, carbs: 23, fat: 0.9, energy: 111 },
-    { text: 'ข้าวไรซ์เบอรี่', protein: 2.6, carbs: 23, fat: 1, energy: 111 },
-    { text: 'ขนมปังขาว', protein: 9, carbs: 49, fat: 3.2, energy: 264 },
-    { text: 'ขนมปังโฮลวีต', protein: 13, carbs: 41, fat: 3.4, energy: 247 },
-    { text: 'อกไก่สุก', protein: 31.5, carbs: 0, fat: 3.2, energy: 158 },
-    { text: 'อกไก่ไม่สุก', protein: 23, carbs: 0, fat: 2.6, energy: 120 },
-    { text: 'สะโพกไก่ (ไม่สุก)', protein: 21, carbs: 0, fat: 4.4, energy: 124 },
-    { text: 'หมู (สันนอก) (ไม่สุก)', protein: 22.8, carbs: 0, fat: 2.6, energy: 121 },
-    { text: 'สันใน', protein: 30.4, carbs: 0, fat: 6.3, energy: 187 },
-    { text: 'สะโพก', protein: 21.8, carbs: 0, fat: 2.9, energy: 120 },
-    { text: 'สันคอ', protein: 17.7, carbs: 0, fat: 13.1, energy: 189 },
-    { text: 'สามชั้น', protein: 9.3, carbs: 0, fat: 53, energy: 518 }
+    { text: 'ข้าวขาว', protein: 2.7, carbs: 28, fat: 0.3, energy: 130, amount: 100, unit: 'กรัม' },
+    { text: 'ข้าวกล้อง', protein: 2.7, carbs: 23, fat: 0.9, energy: 111, amount: 100, unit: 'กรัม' },
+    { text: 'ข้าวไรซ์เบอรี่', protein: 2.6, carbs: 23, fat: 1, energy: 111, amount: 100, unit: 'กรัม' },
+    { text: 'ขนมปังขาว', protein: 9, carbs: 49, fat: 3.2, energy: 264, amount: 100, unit: 'กรัม' },
+    { text: 'ขนมปังโฮลวีต', protein: 13, carbs: 41, fat: 3.4, energy: 247, amount: 100, unit: 'กรัม' },
+    { text: 'อกไก่สุก', protein: 31.5, carbs: 0, fat: 3.2, energy: 158, amount: 100, unit: 'กรัม' },
+    { text: 'อกไก่ไม่สุก', protein: 23, carbs: 0, fat: 2.6, energy: 120, amount: 100, unit: 'กรัม' },
+    { text: 'สะโพกไก่ (ไม่สุก)', protein: 21, carbs: 0, fat: 4.4, energy: 124, amount: 100, unit: 'กรัม' },
+    { text: 'BAAM Whey', protein: 25, carbs: 5, fat: 3, energy: 150, amount: 1, unit: 'ช้อน' },
+    { text: 'หมู (สันนอก)', protein: 22.8, carbs: 0, fat: 2.6, energy: 121, amount: 100, unit: 'กรัม' },
+    { text: 'สันใน', protein: 30.4, carbs: 0, fat: 6.3, energy: 187, amount: 100, unit: 'กรัม' },
+    { text: 'สะโพก', protein: 21.8, carbs: 0, fat: 2.9, energy: 120, amount: 100, unit: 'กรัม' },
+    { text: 'สันคอ', protein: 17.7, carbs: 0, fat: 13.1, energy: 189, amount: 100, unit: 'กรัม' },
+    { text: 'สามชั้น', protein: 9.3, carbs: 0, fat: 53, energy: 518, amount: 100, unit: 'กรัม' },
+    { text: 'ไข่', protein: 6.3, carbs: 0.4, fat: 5, energy: 72, amount: 1, unit: 'ฟอง' },
 ];
 
 // Function to add a new row
@@ -30,12 +32,18 @@ function addRow() {
         opt.textContent = option.text;
         dropdown.appendChild(opt);
     });
+    dropdown.addEventListener('change', function() {
+        const selectedOption = options.find(option => option.text === this.value);
+        if (selectedOption) {
+            weightInput.placeholder = `${selectedOption.unit}`;
+        }
+    });    
     row.appendChild(dropdown);
 
     const weightInput = document.createElement('input');
     weightInput.type = 'number';
     weightInput.classList.add('form-control', 'weight-input', 'me-3');
-    weightInput.placeholder = 'ปริมาณ';
+    weightInput.placeholder = 'กรัม';
     row.appendChild(weightInput);
 
     // const g = document.createElement('span');
@@ -66,10 +74,10 @@ function calculateTotal() {
         const weight = parseFloat(row.querySelector('.weight-input').value);
 
         if (selectedOption && !isNaN(weight)) {
-            totalProtein += (selectedOption.protein * weight) / 100;
-            totalCarbs += (selectedOption.carbs * weight) / 100;
-            totalFat += (selectedOption.fat * weight) / 100;
-            totalEnergy += (selectedOption.energy * weight) / 100;
+            totalProtein += (selectedOption.protein * weight) / selectedOption.amount;
+            totalCarbs += (selectedOption.carbs * weight) / selectedOption.amount;
+            totalFat += (selectedOption.fat * weight) / selectedOption.amount;
+            totalEnergy += (selectedOption.energy * weight) / selectedOption.amount;
         }
     });
 
