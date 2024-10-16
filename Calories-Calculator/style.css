@@ -54,7 +54,7 @@ button#add-row {
   flex-direction: column; /* ให้บาร์อยู่ในแนวตั้ง */
   align-items: center; /* จัดให้อยู่ตรงกลาง */
   height: 100%;
-  width: 60px; /* ความกว้างของบาร์ */
+  width: 75px; /* ความกว้างของบาร์ */
   position: relative; /* ช่วยให้จัดตำแหน่งบาร์ด้านใน */
 }
 
