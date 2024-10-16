@@ -15,6 +15,7 @@ const options = [
     { text: 'สันคอ', protein: 17.7, carbs: 0, fat: 13.1, energy: 189, amount: 100, unit: 'กรัม' },
     { text: 'สามชั้น', protein: 9.3, carbs: 0, fat: 53, energy: 518, amount: 100, unit: 'กรัม' },
     { text: 'ไข่', protein: 6.3, carbs: 0.4, fat: 5, energy: 72, amount: 1, unit: 'ฟอง' },
+    { text: 'ข้าวผัด', protein: 4.7, carbs: 31, fat: 2.3, energy: 163, amount: 100, unit: 'กรัม' },
 ];
 
 // Function to add a new row
