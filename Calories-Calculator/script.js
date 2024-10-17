@@ -16,7 +16,7 @@ const options = [
     { text: 'สามชั้น', protein: 9.3, carbs: 0, fat: 53, energy: 518, amount: 100, unit: 'กรัม' },
     { text: 'ไข่', protein: 6.3, carbs: 0.4, fat: 5, energy: 72, amount: 1, unit: 'ฟอง' },
     { text: 'ข้าวผัด', protein: 4.7, carbs: 31, fat: 2.3, energy: 163, amount: 100, unit: 'กรัม' },
-    { text: 'เป็ด', protein: 4.7, carbs: 31, fat: 2.3, energy: 163, amount: 100, unit: 'กรัม' },
+    { text: 'เป็ด', protein: 13.4, carbs: 0, fat: 16.2, energy: 200, amount: 100, unit: 'กรัม' },
     { text: 'นูเทล่า', protein: 5.4, carbs: 56, fat: 30, energy: 520, amount: 100, unit: 'กรัม' },
 ];
 
