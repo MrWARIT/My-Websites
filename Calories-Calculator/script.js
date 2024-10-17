@@ -18,6 +18,7 @@ const options = [
     { text: 'ข้าวผัด', protein: 4.7, carbs: 31, fat: 2.3, energy: 163, amount: 100, unit: 'กรัม' },
     { text: 'เป็ด', protein: 13.4, carbs: 0, fat: 16.2, energy: 200, amount: 100, unit: 'กรัม' },
     { text: 'นูเทล่า', protein: 5.4, carbs: 56, fat: 30, energy: 520, amount: 100, unit: 'กรัม' },
+    { text: 'หนังไก่', protein: 13, carbs: 0, fat: 32, energy: 350, amount: 100, unit: 'กรัม' },
 ];
 
 // Function to add a new row
@@ -44,7 +45,7 @@ function addRow() {
     row.appendChild(dropdown);
 
     const weightInput = document.createElement('input');
-    weightInput.type = 'number';
+    // weightInput.type = 'number';
     weightInput.classList.add('form-control', 'weight-input', 'me-3');
     weightInput.placeholder = 'กรัม';
     row.appendChild(weightInput);
@@ -65,7 +66,51 @@ function addRow() {
     formContainer.appendChild(row);
 }
 
-// Function to calculate totals
+function addCustomRow() {
+    const formContainer = document.getElementById('form-container');
+
+    const row = document.createElement('div');
+    row.classList.add('input-row', 'd-flex', 'mb-2', 'align-items-center', 'custom-row');
+
+    // Create 4 input fields for carbs, protein, fat, and energy
+    const carbsInput = document.createElement('input');
+    // carbsInput.type = 'number';
+    carbsInput.classList.add('form-control', 'carbs-input', 'me-3');
+    carbsInput.placeholder = 'คาร์บ (g)';
+    row.appendChild(carbsInput);
+
+    const proteinInput = document.createElement('input');
+    // proteinInput.type = 'number';
+    proteinInput.classList.add('form-control', 'protein-input', 'me-3');
+    proteinInput.placeholder = 'โปรตีน (g)';
+    row.appendChild(proteinInput);
+
+    const fatInput = document.createElement('input');
+    // fatInput.type = 'number';
+    fatInput.classList.add('form-control', 'fat-input', 'me-3');
+    fatInput.placeholder = 'ไขมัน (g)';
+    row.appendChild(fatInput);
+
+    const energyInput = document.createElement('input');
+    // energyInput.type = 'number';
+    energyInput.classList.add('form-control', 'energy-input', 'me-3');
+    energyInput.placeholder = 'พลังงาน (kcal)';
+    row.appendChild(energyInput);
+
+    // Add delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '-';
+    deleteBtn.classList.add('btn', 'btn-danger');
+    deleteBtn.onclick = () => {
+        row.remove();
+        calculateTotal();
+    };
+    row.appendChild(deleteBtn);
+
+    formContainer.appendChild(row);
+}
+
+
 function calculateTotal() {
     let totalProtein = 0;
     let totalCarbs = 0;
@@ -73,43 +118,49 @@ function calculateTotal() {
     let totalEnergy = 0;
 
     document.querySelectorAll('.input-row').forEach(row => {
-        const selectedOption = options.find(option => option.text === row.querySelector('.dropdown').value);
-        const weight = parseFloat(row.querySelector('.weight-input').value);
+        if (row.classList.contains('custom-row')) {
+            // If it's a custom row, take values from the input fields directly
+            const carbs = parseFloat(row.querySelector('.carbs-input').value);
+            const protein = parseFloat(row.querySelector('.protein-input').value);
+            const fat = parseFloat(row.querySelector('.fat-input').value);
+            const energy = parseFloat(row.querySelector('.energy-input').value);
 
-        if (selectedOption && !isNaN(weight)) {
-            totalProtein += (selectedOption.protein * weight) / selectedOption.amount;
-            totalCarbs += (selectedOption.carbs * weight) / selectedOption.amount;
-            totalFat += (selectedOption.fat * weight) / selectedOption.amount;
-            totalEnergy += (selectedOption.energy * weight) / selectedOption.amount;
+            if (!isNaN(carbs)) totalCarbs += carbs;
+            if (!isNaN(protein)) totalProtein += protein;
+            if (!isNaN(fat)) totalFat += fat;
+            if (!isNaN(energy)) totalEnergy += energy;
+        } else {
+            // Handle the original dropdown + weight row
+            const selectedOption = options.find(option => option.text === row.querySelector('.dropdown').value);
+            const weight = parseFloat(row.querySelector('.weight-input').value);
+
+            if (selectedOption && !isNaN(weight)) {
+                totalProtein += (selectedOption.protein * weight) / selectedOption.amount;
+                totalCarbs += (selectedOption.carbs * weight) / selectedOption.amount;
+                totalFat += (selectedOption.fat * weight) / selectedOption.amount;
+                totalEnergy += (selectedOption.energy * weight) / selectedOption.amount;
+            }
         }
     });
 
     // Update total display
-    // document.getElementById('total').textContent = `Total: คาร์บ ${totalCarbs.toFixed(1)}g, โปรตีน ${totalProtein.toFixed(1)}g, ไขมัน ${totalFat.toFixed(1)}g, พลังงาน ${totalEnergy.toFixed(1)} kcal`;
     document.getElementById('total-carbs').textContent = `${totalCarbs.toFixed(0)} g`;
     document.getElementById('total-protein').textContent = `${totalProtein.toFixed(0)} g`;
     document.getElementById('total-fat').textContent = `${totalFat.toFixed(0)} g`;
     document.getElementById('total-energy').textContent = `${totalEnergy.toFixed(0)} kcal`;
 
-    // Update nutrient bars with height
+    // Update nutrient bars with height (as before)
     document.getElementById('carbs-bar').style.height = `${(totalCarbs / 384) * 100}%`;
     document.getElementById('protein-bar').style.height = `${(totalProtein / 151) * 100}%`;
     document.getElementById('fat-bar').style.height = `${(totalFat / 63) * 100}%`;
     document.getElementById('energy-bar').style.height = `${(totalEnergy / 2700) * 100}%`;
-
-    document.querySelectorAll('.dashed-line').forEach(line => {
-        const nutrientType = line.parentNode.id.replace('-bar', ''); // รับประเภทสารอาหาร
-        const maxValue = {
-            carbs: 384,
-            protein: 151,
-            fat: 63,
-            energy: 2700
-        }[nutrientType];
-
-        const dashedLinePosition = (totalNutrientValue / maxValue) * 100; // คำนวณตำแหน่ง
-        line.style.top = `${100 - dashedLinePosition}%`; // ปรับตำแหน่งเส้นประ
-    });
 }
+
+// Add button for adding custom row
+document.getElementById('add-custom-row').addEventListener('click', () => {
+    addCustomRow();
+    calculateTotal();
+});
 
 // Add initial row
 document.getElementById('add-row').addEventListener('click', () => {
