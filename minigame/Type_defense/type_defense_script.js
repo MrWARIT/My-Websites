@@ -497,6 +497,18 @@ var vocabulary_list = [
         Sentence: "She started writing ______ at a young age.", IsSentence: true, 
         Amount: 1, id: 51, Credit: '<a href="https://www.flaticon.com/free-icons/literature" title="literature icons">Literature icons created by Icongeek26 - Flaticon</a>'
     },
+    {
+        English: "Skeptical", Thai: "ระแวง สงสัย", Type: "[adj.]", IsImage: false, 
+        Explanation: "Doubting that something is true or useful", IsExplanation: true, 
+        Sentence: "I'm a bit _______ about his chances of success", IsSentence: true, 
+        Amount: 1, id: 52, Credit: 'Credit'
+    },
+    {
+        English: "Dedicated", Thai: "อุทิศ ทุ่มเท", Type: "[adj.]", IsImage: false, 
+        Explanation: "Believing that something is very important and giving a lot of time and energy to it", IsExplanation: true, 
+        Sentence: "The Green Party is _________ to protecting the environment", IsSentence: true, 
+        Amount: 1, id: 52, Credit: 'Credit'
+    },
     // {
     //     English: "", Thai: "", Type: "", IsImage: false, 
     //     Explanation: "", IsExplanation: true, 
