@@ -1,29 +1,30 @@
 // Define the food options
 const options = [ // อิ่มตัว | ไม่อิ่มตัว
-    { text: 'ข้าวขาว', protein: 2.7, carbs: 28, fat: 0.3, energy: 130, amount: 100, unit: 'กรัม' },
-    { text: 'ข้าวกล้อง', protein: 2.7, carbs: 23, fat: 0.9, energy: 111, amount: 100, unit: 'กรัม' },
-    { text: 'ข้าวไรซ์เบอรี่', protein: 2.6, carbs: 23, fat: 1, energy: 111, amount: 100, unit: 'กรัม' },
-    { text: 'ข้าวผัด (ประมาณ)', protein: 8, carbs: 27, fat: 8, energy: 180, amount: 100, unit: 'กรัม' }, // 2 | 6
-    // { text: 'ผัดกะเพราหมู (กับข้าว)(ประมาณ)', protein: 26.4, carbs: 0, fat: 18.5, energy: 279, amount: 100, unit: 'กรัม' }, // 5.5 | 12.5
-    // { text: 'ผัดคะน้าหมู (กับข้าว)', protein: 11.2, carbs: 6, fat: 11.1, energy: 151, amount: 100, unit: 'กรัม' }, // 
-    { text: 'อกไก่สุก', protein: 31.5, carbs: 0, fat: 3.2, energy: 158, amount: 100, unit: 'กรัม' },
-    { text: 'BAAM Whey', protein: 25, carbs: 5, fat: 3, energy: 150, amount: 1, unit: 'ช้อน' },
-    { text: 'หมูทอด (ประมาณ)', protein: 20.2, carbs: 0.8, fat: 35.3, energy: 405, amount: 100, unit: 'กรัม' },
-    { text: 'ไข่ต้ม', protein: 6.3, carbs: 0.4, fat: 5, energy: 72, amount: 1, unit: 'ฟอง' },
-    { text: 'ไข่ดาว/เจียว (ประมาณ)', protein: 6.5, carbs: 0.4, fat: 11.8, energy: 133, amount: 1, unit: 'ฟอง' }, // 2.6 |
-    // { text: 'ไข่เจียว (ประมาณ)', protein: 6.5, carbs: 0.4, fat: 11.8, energy: 133, amount: 1, unit: 'ฟอง' }, // 2.6 |
-    { text: 'สันนอก', protein: 22.8, carbs: 0, fat: 2.6, energy: 121, amount: 100, unit: 'กรัม' },
-    { text: 'สันใน', protein: 30.4, carbs: 0, fat: 6.3, energy: 187, amount: 100, unit: 'กรัม' },
-    { text: 'สะโพก', protein: 21.8, carbs: 0, fat: 2.9, energy: 120, amount: 100, unit: 'กรัม' },
-    { text: 'สันคอ', protein: 17.7, carbs: 0, fat: 13.1, energy: 189, amount: 100, unit: 'กรัม' },
-    { text: 'สามชั้น', protein: 9.3, carbs: 0, fat: 53, energy: 518, amount: 100, unit: 'กรัม' },
-    { text: 'เป็ด', protein: 13.4, carbs: 0, fat: 16.2, energy: 200, amount: 100, unit: 'กรัม' },
-    { text: 'หนังไก่', protein: 13, carbs: 0, fat: 32, energy: 350, amount: 100, unit: 'กรัม' },
-    { text: 'นูเทล่า', protein: 5.4, carbs: 56, fat: 30, energy: 520, amount: 100, unit: 'กรัม' },
-    { text: 'ขนมปังขาว', protein: 9, carbs: 49, fat: 3.2, energy: 264, amount: 100, unit: 'กรัม' },
-    { text: 'ขนมปังโฮลวีต', protein: 13, carbs: 41, fat: 3.4, energy: 247, amount: 100, unit: 'กรัม' },
-    { text: 'อกไก่ไม่สุก', protein: 23, carbs: 0, fat: 2.6, energy: 120, amount: 100, unit: 'กรัม' },
-    { text: 'สะโพกไก่ (ไม่สุก)', protein: 21, carbs: 0, fat: 4.4, energy: 124, amount: 100, unit: 'กรัม' },
+    { text: 'ข้าวขาว', protein: 2.7, carbs: 28, fat: 0.3, energy: 130, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'ข้าวกล้อง', protein: 2.7, carbs: 23, fat: 0.9, energy: 111, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'ข้าวไรซ์เบอรี่', protein: 2.6, carbs: 23, fat: 1, energy: 111, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'ข้าวผัด (ประมาณ)', protein: 8, carbs: 27, fat: 8, energy: 180, sugar: 0, amount: 100, unit: 'กรัม' }, // 2 | 6
+    { text: 'ซอสพริกศรีราชา', protein: 0, carbs: 23.5, fat: 0, energy: 117.6, sugar: 17.6, amount: 100, unit: 'กรัม' },
+    // { text: 'ผัดกะเพราหมู (กับข้าว)(ประมาณ)', protein: 26.4, carbs: 0, fat: 18.5, energy: 279, sugar: 0, amount: 100, unit: 'กรัม' }, // 5.5 | 12.5
+    // { text: 'ผัดคะน้าหมู (กับข้าว)', protein: 11.2, carbs: 6, fat: 11.1, energy: 151, sugar: 0, amount: 100, unit: 'กรัม' }, // 
+    { text: 'อกไก่สุก', protein: 31.5, carbs: 0, fat: 3.2, energy: 158, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'BAAM Whey', protein: 25, carbs: 5, fat: 3, energy: 150, sugar: 0, amount: 1, unit: 'ช้อน' },
+    { text: 'หมูทอด (ประมาณ)', protein: 20.2, carbs: 0.8, fat: 35.3, energy: 405, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'ไข่ต้ม', protein: 6.3, carbs: 0.4, fat: 5, energy: 72, sugar: 0, amount: 1, unit: 'ฟอง' },
+    { text: 'ไข่ดาว/เจียว (ประมาณ)', protein: 6.5, carbs: 0.4, fat: 11.8, energy: 133, sugar: 0, amount: 1, unit: 'ฟอง' }, // 2.6 |
+    // { text: 'ไข่เจียว (ประมาณ)', protein: 6.5, carbs: 0.4, fat: 11.8, energy: 133, sugar: 0, amount: 1, unit: 'ฟอง' }, // 2.6 |
+    { text: 'สันนอก', protein: 22.8, carbs: 0, fat: 2.6, energy: 121, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'สันใน', protein: 30.4, carbs: 0, fat: 6.3, energy: 187, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'สะโพก', protein: 21.8, carbs: 0, fat: 2.9, energy: 120, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'สันคอ', protein: 17.7, carbs: 0, fat: 13.1, energy: 189, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'สามชั้น', protein: 9.3, carbs: 0, fat: 53, energy: 518, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'เป็ด', protein: 13.4, carbs: 0, fat: 16.2, energy: 200, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'หนังไก่', protein: 13, carbs: 0, fat: 32, energy: 350, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'นูเทล่า', protein: 5.4, carbs: 56, fat: 30, energy: 520, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'ขนมปังขาว', protein: 9, carbs: 49, fat: 3.2, energy: 264, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'ขนมปังโฮลวีต', protein: 13, carbs: 41, fat: 3.4, energy: 247, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'อกไก่ไม่สุก', protein: 23, carbs: 0, fat: 2.6, energy: 120, sugar: 0, amount: 100, unit: 'กรัม' },
+    { text: 'สะโพกไก่ (ไม่สุก)', protein: 21, carbs: 0, fat: 4.4, energy: 124, sugar: 0, amount: 100, unit: 'กรัม' },
 ];
 
 // Function to add a new row
