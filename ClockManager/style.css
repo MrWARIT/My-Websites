@@ -1,0 +1,25 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+}
+
+.clock-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #3a3a3a, #1a1a1a);
+  border: 3px solid #8884d8;
+  position: relative;
+}
+
+.clock-circle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #cbb4f7;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
